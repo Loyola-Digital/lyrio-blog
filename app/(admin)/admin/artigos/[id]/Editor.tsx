@@ -9,6 +9,7 @@ import { wrapSelection } from '@/lib/md-insert'
 import type { FaqItem, Post, Version } from '@/lib/types'
 import { deletePostAction, saveEditor, unpublishPost } from '../../actions'
 import { useNoResetAction } from '../../useNoResetAction'
+import { TranslationPanel } from './TranslationPanel'
 
 export function Editor(props: {
   id: string | null
@@ -173,10 +174,8 @@ export function Editor(props: {
         </section>
 
         {published && (
-          <section className="adm-panel">
-            <h2>Traduções</h2>
-            <p className="num">{41 - props.missing.length}/41 idiomas</p>
-          </section>
+          <TranslationPanel postId={post.id} missing={props.missing} autoTranslate={props.autoTranslate}
+            models={props.models} defaultModel={props.defaultTranslator} />
         )}
 
         {post && (
