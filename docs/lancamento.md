@@ -5,7 +5,7 @@ Checklist para colocar `blog.lyrioapp.com` no ar. Tudo em **contas do Lyrio**, p
 ## 1. Contas e projeto
 
 - [ ] Repositório no GitHub (privado, na organização do Lyrio) com este código.
-- [ ] Projeto na **Vercel**, plano **Pro** (o Hobby não permite uso comercial). Importar o repositório.
+- [ ] Projeto na **Vercel**, no plano gratuito (Hobby), importando o repositório. Os termos da Vercel reservam o Hobby para uso não comercial; se ela reclamar ou pausar o projeto, é só migrar para um time Pro. Tecnicamente o Hobby atende: as rotas de IA usam até 5 minutos, que é o máximo do plano.
 - [ ] **Neon** pelo Marketplace da Vercel (Storage → Neon). A integração cria o `DATABASE_URL`.
   - Use a URL **pooled** (com `-pooler` no host).
 - [ ] **Vercel Blob** (Storage → Blob). Ele cria o `BLOB_READ_WRITE_TOKEN`.

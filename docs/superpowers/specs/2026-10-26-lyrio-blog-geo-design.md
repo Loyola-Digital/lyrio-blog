@@ -149,7 +149,7 @@ Referência aprovada pelo usuário ("boa, segue"): `2026-10-26-lyrio-blog-geo-mo
 
 **Pré-requisitos de contas (não mudam o que se constrói, mas precisam existir):**
 - Vercel, Neon, Blob, repositório e chave do OpenRouter ficam **em contas do Lyrio**, para não ter migração depois.
-- A Vercel precisa estar no **plano Pro**, porque o Hobby não permite uso comercial (confirmar na época).
+- Vercel no **plano gratuito (Hobby)**, por decisão do usuário em 26/10, ciente de que os termos da Vercel reservam o Hobby para uso não comercial. Se a Vercel pausar o projeto, a saída é migrar para um time Pro.
 - Os limites de uso do OpenRouter e do modelo escolhido limitam a velocidade das 41 traduções. O builder controla a concorrência e as novas tentativas.
 
 ## 9. Material de partida para o "Sobre o Lyrio"
