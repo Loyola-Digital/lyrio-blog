@@ -1,0 +1,8 @@
+// Baixa só os glifos usados no texto (parâmetro text= do Google Fonts) — resolve CJK, árabe e devanágari sem pesar.
+export async function loadGoogleFont(family: string, text: string): Promise<ArrayBuffer> {
+  const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@500&text=${encodeURIComponent(text)}`
+  const css = await (await fetch(url)).text()
+  const src = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/)?.[1]
+  if (!src) throw new Error(`Fonte não encontrada: ${family}`)
+  return (await fetch(src)).arrayBuffer()
+}
