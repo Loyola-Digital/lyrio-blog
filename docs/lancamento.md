@@ -29,7 +29,7 @@ npm run db:migrate             # cria as tabelas (pode rodar de novo sem problem
 npm run seed:about             # grava o primeiro "Sobre o Lyrio"
 ```
 
-Faça o deploy **depois** de migrar, porque o build gera as páginas iniciais lendo o banco.
+O build não precisa do banco: as páginas são geradas na primeira visita. Mas o site só funciona depois que o `DATABASE_URL` existir na Vercel e o `db:migrate` rodar. Sem isso, toda página dá erro 500 com a mensagem "DATABASE_URL não configurada" no log.
 
 ## 3. Domínio
 

@@ -32,4 +32,6 @@ jobs:
       - run: npm test # inclui o teste contra o Postgres de verdade (TEST_DATABASE_URL)
       - run: npx eslint .
       - run: npx tsc --noEmit
-      - run: npm run build # as páginas iniciais leem o banco no build
+      - run: npm run build # sem banco de propósito: o build não pode depender dele (como na Vercel antes da Neon)
+        env:
+          DATABASE_URL: ''

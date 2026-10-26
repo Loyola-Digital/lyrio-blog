@@ -4,7 +4,7 @@ import { listAllPublishedVersions } from '@/lib/posts'
 import { getAbout } from '@/lib/settings'
 import { SITE_URL } from '@/lib/site'
 
-export const revalidate = 3600 // publicar e salvar o "Sobre o Lyrio" revalidam na hora
+export const dynamic = 'force-dynamic' // sempre atual; o build não depende do banco
 
 export async function GET() {
   const sql = getSql()

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { jsonLdString, siteJsonLd } from '@/lib/jsonld'
 import { t } from '@/lib/i18n'
-import { dirFor, isLocale, LOCALES } from '@/lib/locales'
+import { dirFor, isLocale } from '@/lib/locales'
 import { SITE_URL } from '@/lib/site'
 import { Footer } from '../components'
 import { fontClassFor } from '../fonts'
@@ -16,8 +16,9 @@ export const metadata: Metadata = {
   publisher: 'Lyrio',
 }
 
+// Nada é gerado no build (o build não precisa do banco): cada página nasce na primeira visita e fica em cache.
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }))
+  return []
 }
 
 export default async function BlogLayout(props: { children: React.ReactNode; params: Promise<{ locale: string }> }) {

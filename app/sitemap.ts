@@ -4,7 +4,7 @@ import { LOCALES } from '@/lib/locales'
 import { listAllPublishedVersions } from '@/lib/posts'
 import { SITE_URL } from '@/lib/site'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic' // lê o banco a cada pedido (só robôs pedem); o build não depende do banco
 
 const url = (locale: string, slug?: string) => `${SITE_URL}/${locale}${slug ? `/${encodeURIComponent(slug)}` : ''}`
 
