@@ -13,7 +13,7 @@ Uma melhoria por rodada, a de maior valor primeiro. Cada uma entra com teste, li
    - endereços fora de qualquer rota caem num 404 próprio (`app/global-not-found.tsx`);
    - limite: um idioma inválido (`/xx`) ainda mostra o 404 padrão do Next, com status 404. Fechar isso via `dynamicParams` quebraria os artigos gerados sob demanda.
 
-4. **CI no GitHub Actions** (`.github/workflows/ci.yml`): a cada push rodam os testes (inclusive contra um Postgres de verdade), o lint, os tipos e o build. **Parado por cobrança:** o GitHub não iniciou o job porque o pagamento da organização Loyola-Digital falhou ou o limite de gastos do Actions precisa subir (Settings → Billing & plans). Resolvido isso, roda sozinho.
+4. **CI no GitHub Actions** (`.github/workflows/ci.yml`): a cada push rodam os testes (inclusive contra um Postgres de verdade), o lint, os tipos e o build. Funciona desde que o repositório ficou público, porque em repositório público o Actions é gratuito.
 
 5. **JSON-LD da página inicial** (`homeJsonLd`): cada idioma descreve a home como `CollectionPage` com a `ItemList` dos artigos, um índice que as IAs leem direto.
 
