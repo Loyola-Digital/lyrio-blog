@@ -30,7 +30,8 @@ async function upsertVersion(sql: Sql, postId: string, locale: Locale, rev: numb
             ${JSON.stringify(f.faq)}::text::jsonb, ${f.metaDescription})
     on conflict (post_id, locale) do update set rev = excluded.rev, slug = excluded.slug, title = excluded.title,
       headline = excluded.headline, summary = excluded.summary, body_md = excluded.body_md, faq = excluded.faq,
-      meta_description = excluded.meta_description, updated_at = now()`
+      meta_description = excluded.meta_description, updated_at = now()
+    where post_versions.rev <= excluded.rev` // tradução de um rev antigo que chega atrasada não apaga a mais nova
 }
 
 export async function createPost(

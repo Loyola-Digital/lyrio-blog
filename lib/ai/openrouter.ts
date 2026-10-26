@@ -24,28 +24,35 @@ export async function chatJson<T>(
   const key = process.env.OPENROUTER_API_KEY
   if (!key) throw new AiError('OPENROUTER_API_KEY não configurada.')
 
-  const res = await fetchImpl(`${API}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${key}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': SITE_URL,
-      'X-Title': 'Lyrio Blog',
-    },
-    body: JSON.stringify({
-      model: o.model,
-      messages: [
-        { role: 'system', content: o.system },
-        { role: 'user', content: o.user },
-      ],
-      response_format: { type: 'json_schema', json_schema: { name: o.name, strict: true, schema: jsonSchemaFor(o.schema) } },
-      provider: { require_parameters: true },
-      max_tokens: 16000,
-    }),
-    signal: AbortSignal.timeout(280_000),
-  })
+  let res: Response
+  try {
+    res = await fetchImpl(`${API}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': SITE_URL,
+        'X-Title': 'Lyrio Blog',
+      },
+      body: JSON.stringify({
+        model: o.model,
+        messages: [
+          { role: 'system', content: o.system },
+          { role: 'user', content: o.user },
+        ],
+        response_format: { type: 'json_schema', json_schema: { name: o.name, strict: true, schema: jsonSchemaFor(o.schema) } },
+        provider: { require_parameters: true },
+        max_tokens: 16000,
+      }),
+      signal: AbortSignal.timeout(280_000),
+    })
+  } catch (e) {
+    // rede fora, DNS, timeout: vira mensagem legível em vez da página de erro do Next
+    throw new AiError(`Não foi possível falar com o OpenRouter: ${(e as Error).message}`)
+  }
   const body = await res.json().catch(() => ({}))
-  if (!res.ok) throw new AiError(`Erro do OpenRouter: ${body?.error?.message ?? res.status}`)
+  // o OpenRouter devolve 200 com { error } quando o provedor falha
+  if (!res.ok || body?.error) throw new AiError(`Erro do OpenRouter: ${body?.error?.message ?? res.status}`)
 
   const choice = body?.choices?.[0]
   if (choice?.finish_reason === 'length') throw new AiError('O texto ficou longo demais e foi cortado. Tente um tema mais específico.')

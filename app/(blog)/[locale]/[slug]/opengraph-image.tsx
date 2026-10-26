@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og'
 import { getSql } from '@/lib/db'
 import { serifFamilyFor } from '@/lib/fonts-map'
 import { dirFor, isLocale } from '@/lib/locales'
-import { loadGoogleFont } from '@/lib/og-font'
+import { loadGoogleFont, ogFonts } from '@/lib/og-font'
 import { getPublishedVersion } from '@/lib/posts'
 import { normalizeSlugParam } from '@/lib/slug'
 
@@ -39,6 +39,6 @@ export default async function Image(props: { params: Promise<{ locale: string; s
         <div style={{ display: 'flex', fontSize: 24, color: '#b89346' }}>{FOOTER}</div>
       </div>
     ),
-    { ...size, fonts: font ? [{ name: 'Serif', data: font, weight: 500, style: 'normal' }] : [] },
+    { ...size, fonts: ogFonts(font) },
   )
 }

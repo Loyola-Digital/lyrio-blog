@@ -51,6 +51,16 @@ describe('posts', () => {
     expect((await listAdminPosts(sql))[0]).toMatchObject({ id, translated: 1, title: 'Como parar', status: 'published' })
   })
 
+  it('tradução de rev antigo que chega atrasada não sobrescreve a mais nova', async () => {
+    const id = await createPost(sql, { type: 'artigo', source: src() })
+    await publish(sql, id)
+    await publish(sql, id)
+    await saveTranslation(sql, id, 'de', 2, src({ slug: 'neu', title: 'Neu' }))
+    await saveTranslation(sql, id, 'de', 1, src({ slug: 'alt', title: 'Alt' }))
+    expect(await missingLocales(sql, id)).not.toContain('de')
+    expect((await getPublishedVersion(sql, 'de', 'neu'))!.version).toMatchObject({ title: 'Neu', rev: 2 })
+  })
+
   it('público só vê publicados, com alternates', async () => {
     const id = await createPost(sql, { type: 'artigo', source: src() })
     expect(await getPublishedVersion(sql, 'pt-BR', 'como-parar')).toBeNull()

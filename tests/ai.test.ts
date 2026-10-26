@@ -39,6 +39,10 @@ describe('chatJson', () => {
     await expect(run(ok('{"b":1}'))).rejects.toThrow('A IA devolveu um formato inválido. Tente de novo ou escolha outro modelo.')
     await expect(run(vi.fn(async () => new Response('{"error":{"message":"No endpoints found"}}', { status: 404 }))))
       .rejects.toThrow('Erro do OpenRouter: No endpoints found')
+    await expect(run(vi.fn(async () => { throw new TypeError('fetch failed') })))
+      .rejects.toThrow('Não foi possível falar com o OpenRouter: fetch failed')
+    await expect(run(vi.fn(async () => new Response('{"error":{"message":"Provider returned error"}}', { status: 200 }))))
+      .rejects.toThrow('Erro do OpenRouter: Provider returned error')
     delete process.env.OPENROUTER_API_KEY
     await expect(run(ok('{"a":1}'))).rejects.toThrow('OPENROUTER_API_KEY não configurada.')
   })

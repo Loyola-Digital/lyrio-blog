@@ -62,6 +62,8 @@ export function Editor(props: {
   return (
     <div className="ed">
       <form id="editor" className="ed-main" onSubmit={onSubmit}>
+        {/* botão padrão desabilitado: Enter num campo não envia (num publicado, republicaria e retraduziria tudo) */}
+        <button type="submit" disabled hidden aria-hidden="true" />
         <label htmlFor="type">Tipo</label>
         <select id="type" name="type" defaultValue={post?.type ?? 'artigo'}>
           <option value="artigo">Artigo</option>
