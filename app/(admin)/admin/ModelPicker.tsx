@@ -1,9 +1,8 @@
 'use client'
 
-import { useId, useState, useSyncExternalStore } from 'react'
+import { useState, useSyncExternalStore } from 'react'
+import { groupModels } from '@/lib/ai/model-groups'
 import type { ModelOption } from '@/lib/ai/openrouter'
-
-const price = (n: number) => (Number.isFinite(n) ? `$${n.toFixed(2)}` : '?')
 
 export function readSavedModel(key: string): string | null {
   try {
@@ -32,16 +31,16 @@ export function useSavedModel(key: string, fallback: string): [string, (model: s
 }
 
 export function ModelPicker(props: { name: string; value: string; onChange: (model: string) => void; models: ModelOption[] }) {
-  const listId = useId()
   return (
     <>
-      <input name={props.name} list={listId} value={props.value} onChange={(e) => props.onChange(e.target.value)} spellCheck={false} required />
-      <datalist id={listId}>
-        {props.models.map((m) => (
-          <option key={m.id} value={m.id}>{`${m.name} · ${price(m.prompt)}/${price(m.completion)} por 1M`}</option>
+      <select name={props.name} value={props.value} onChange={(e) => props.onChange(e.target.value)} required>
+        {groupModels(props.models, props.value).map((g) => (
+          <optgroup key={g.label} label={g.label}>
+            {g.options.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+          </optgroup>
         ))}
-      </datalist>
-      <p className="hint">Qualquer modelo do OpenRouter com saída estruturada. Comece a digitar para filtrar.</p>
+      </select>
+      <p className="hint">Preço do OpenRouter por 1 milhão de tokens (entrada / saída). Os recomendados estão no topo.</p>
     </>
   )
 }
