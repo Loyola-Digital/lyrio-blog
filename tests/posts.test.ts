@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import type { Sql } from '@/lib/db'
 import {
-  createPost, deletePost, getPostForEdit, getPublishedVersion, listAdminPosts, listAllPublishedVersions,
+  allMissing, createPost, deletePost, getPostForEdit, getPublishedVersion, listAdminPosts, listAllPublishedVersions,
   listPublished, listVersionsOf, missingLocales, publish, saveTranslation, unpublish, updateSource,
 } from '@/lib/posts'
 import { src, testSql } from './helpers/db'
@@ -89,6 +89,18 @@ describe('posts', () => {
     await unpublish(sql, id)
     expect(await listPublished(sql, 'ja')).toHaveLength(0)
     expect(await getPublishedVersion(sql, 'ja', '如何')).toBeNull()
+  })
+
+  it('allMissing lista as traduções que faltam só dos artigos publicados', async () => {
+    const pub = await createPost(sql, { type: 'artigo', source: src() })
+    await createPost(sql, { type: 'artigo', source: src({ slug: 'rascunho' }) })
+    await publish(sql, pub)
+    await saveTranslation(sql, pub, 'de', 1, src({ slug: 'de' }))
+    const pairs = await allMissing(sql)
+    expect(pairs).toHaveLength(40)
+    expect(pairs.every((p) => p.postId === pub)).toBe(true)
+    expect(pairs.map((p) => p.locale)).not.toContain('de')
+    expect(pairs.map((p) => p.locale)).not.toContain('pt-BR')
   })
 
   it('deletePost remove as versões', async () => {

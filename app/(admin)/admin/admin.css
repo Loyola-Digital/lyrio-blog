@@ -66,6 +66,8 @@ body.adm {
 .adm-panel { border-top: 2px solid var(--ink); padding-top: 16px; }
 @media (max-width: 800px) { .adm-split { grid-template-columns: 1fr; } }
 
+.adm-translate-all { margin-bottom: 32px; max-width: 520px; }
+
 /* editor */
 .ed { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
 .ed-side { position: sticky; top: 24px; display: grid; gap: 28px; }

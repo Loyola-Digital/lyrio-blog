@@ -96,6 +96,16 @@ export async function missingLocales(sql: Sql, id: string): Promise<Locale[]> {
   return TARGET_LOCALES.filter((l) => !done.has(l))
 }
 
+// Todas as traduções que faltam (ou ficaram para trás num rev antigo) dos artigos publicados.
+export async function allMissing(sql: Sql): Promise<{ postId: string; locale: Locale }[]> {
+  const posts = await sql`select id from posts where status = 'published' order by published_at`
+  const done = await sql`select v.post_id, v.locale from post_versions v join posts p on p.id = v.post_id
+    where p.status = 'published' and v.rev = p.rev`
+  const have = new Set(done.map((r) => `${r.post_id}|${r.locale}`))
+  return posts.flatMap((p) =>
+    TARGET_LOCALES.filter((l) => !have.has(`${p.id}|${l}`)).map((locale) => ({ postId: p.id as string, locale })))
+}
+
 export async function getPostForEdit(sql: Sql, id: string): Promise<{ post: Post; source: Version } | null> {
   if (!UUID.test(id)) return null
   const [r] = await sql`select p.*, v.post_id, v.locale, v.rev as v_rev, v.slug, v.title, v.headline, v.summary,

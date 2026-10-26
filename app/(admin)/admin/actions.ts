@@ -10,7 +10,7 @@ import { getSql } from '@/lib/db'
 import { parseEditorForm } from '@/lib/editor-form'
 import { type Locale } from '@/lib/locales'
 import {
-  createPost, deletePost, getPostForEdit, listVersionsOf, missingLocales, publish, unpublish, updateSource,
+  allMissing, createPost, deletePost, getPostForEdit, listVersionsOf, missingLocales, publish, unpublish, updateSource,
 } from '@/lib/posts'
 import { pathsFor } from '@/lib/revalidate'
 import { getAbout, setAbout } from '@/lib/settings'
@@ -118,6 +118,11 @@ export async function deletePostAction(id: string): Promise<void> {
 export async function getMissing(id: string): Promise<Locale[]> {
   await requireAdmin()
   return missingLocales(getSql(), id)
+}
+
+export async function getAllMissing(): Promise<{ postId: string; locale: Locale }[]> {
+  await requireAdmin()
+  return allMissing(getSql())
 }
 
 export async function saveAbout(_prev: Msg, fd: FormData): Promise<Msg> {

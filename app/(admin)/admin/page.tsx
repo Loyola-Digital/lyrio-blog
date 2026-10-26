@@ -1,16 +1,20 @@
 import Link from 'next/link'
 import { getSql } from '@/lib/db'
 import { TARGET_LOCALES } from '@/lib/locales'
-import { listAdminPosts } from '@/lib/posts'
+import { DEFAULT_TRANSLATOR_MODEL, listModels } from '@/lib/ai/openrouter'
+import { allMissing, listAdminPosts } from '@/lib/posts'
 import { logout } from './actions'
 import { requireAdmin } from './guard'
 import { TYPE_LABEL } from './labels'
+import { TranslateAll } from './TranslateAll'
 
 const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })
 
 export default async function AdminHome() {
   await requireAdmin()
-  const posts = await listAdminPosts(getSql())
+  const sql = getSql()
+  const [posts, missing] = await Promise.all([listAdminPosts(sql), allMissing(sql)])
+  const models = missing.length ? await listModels() : []
   return (
     <main className="adm-wrap">
       <header className="adm-top">
@@ -21,6 +25,9 @@ export default async function AdminHome() {
           <form action={logout}><button className="btn ghost">Sair</button></form>
         </nav>
       </header>
+
+      <TranslateAll missing={missing.length} articles={new Set(missing.map((m) => m.postId)).size}
+        models={models} defaultModel={DEFAULT_TRANSLATOR_MODEL} />
 
       {posts.length === 0 ? (
         <p className="hint">Nenhum artigo ainda. Comece em “+ Novo artigo”.</p>

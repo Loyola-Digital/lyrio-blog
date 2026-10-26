@@ -21,6 +21,12 @@ Uma melhoria por rodada, a de maior valor primeiro. Cada uma entra com teste, li
 
 7. **Tela de erro do admin** (`admin/error.tsx`): se o banco ou a rede falharem, aparece "Algo deu errado" com o código do erro e um botão "Tentar de novo" que recarrega os dados. Testado desligando o banco local e religando.
 
+8. **Artigos de lançamento publicados** (`content/artigos-lancamento.json`): os 20 temas da lista, escritos em português só com o que aparece nas telas do app, publicados com `scripts/publish-launch.ts` (pula o que já existe).
+
+9. **Botão "Traduzir tudo"** no admin: traduz de uma vez tudo o que falta em todos os artigos publicados, com o modelo escolhido, barra de progresso e "Tentar as que faltam".
+
+10. **Tradução direta, sem glossário** (decisão do Lucas): "Opção Nuclear" vira "Nuclear Option" e pronto.
+
 ## Descartadas
 
 - Trilha "Artigos › tipo" visível no artigo: o JSON-LD já tem o breadcrumb e o tipo já aparece acima do título. Não vale o custo.

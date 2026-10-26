@@ -24,10 +24,13 @@ Checklist para colocar `blog.lyrioapp.com` no ar. Tudo em **contas do Lyrio**, p
 ## 2. Banco de produção
 
 ```bash
-vercel env pull .env.local     # baixa as variáveis de produção
-npm run db:migrate             # cria as tabelas (pode rodar de novo sem problema)
-npm run seed:about             # grava o primeiro "Sobre o Lyrio"
+npx vercel link
+npx vercel env pull .env.vercel-production --environment=production
+node --env-file=.env.vercel-production --import tsx scripts/migrate.ts      # cria as tabelas
+node --env-file=.env.vercel-production --import tsx scripts/seed-about.ts   # grava o "Sobre o Lyrio"
 ```
+
+Não use `.env.production.local` nem sobrescreva o `.env.local`: o `next start` carrega esses arquivos sozinho, e o servidor de teste local passaria a mexer no banco de produção.
 
 O build não precisa do banco: as páginas são geradas na primeira visita. Mas o site só funciona depois que o `DATABASE_URL` existir na Vercel e o `db:migrate` rodar. Sem isso, toda página dá erro 500 com a mensagem "DATABASE_URL não configurada" no log.
 

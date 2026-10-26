@@ -7,6 +7,7 @@ import { NATIVE_NAME, TARGET_LOCALES, type Locale } from '@/lib/locales'
 import { runPool } from '@/lib/pool'
 import { getMissing } from '../../actions'
 import { ModelPicker, readSavedModel, useSavedModel } from '../../ModelPicker'
+import { requestTranslation } from '../../translate-client'
 
 const TOTAL = TARGET_LOCALES.length
 const KEY = 'lyrio.translatorModel'
@@ -32,14 +33,7 @@ export function TranslationPanel(props: {
     await runPool(
       locales,
       4,
-      async (locale) => {
-        const res = await fetch('/api/translate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ postId: props.postId, locale, model: withModel }),
-        })
-        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? `Erro ${res.status}`)
-      },
+      (locale) => requestTranslation(props.postId, locale, withModel),
       (_locale, error) => {
         setProgress((p) => p && { ...p, done: p.done + 1 })
         if (error) setLastError(String((error as Error).message ?? error))
