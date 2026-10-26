@@ -1,0 +1,26 @@
+export const ptBR = {
+  blog_name: 'Artigos',
+  nav_artigo: 'Artigos',
+  nav_tutorial: 'Guias',
+  nav_faq: 'Perguntas',
+  kicker_artigo: 'Artigo',
+  kicker_tutorial: 'Guia prático',
+  kicker_faq: 'Perguntas',
+  reading: '{n} min de leitura',
+  updated: 'Atualizado em {date}',
+  team: 'Equipe Lyrio',
+  in_short: 'Em resumo',
+  faq_title: 'Perguntas frequentes',
+  read_also: 'Leia também',
+  get_app: 'Baixar o app',
+  band_title: 'Você não está sozinho nessa luta.',
+  band_text: 'Bloqueio de apps, comunidade e um botão de socorro para as piores horas.',
+  appstore_small: 'Baixar na',
+  play_small: 'Disponível no',
+  language: 'Idioma',
+  home_title: 'Artigos do Lyrio',
+  home_description: 'Guias, perguntas e artigos para sair do vício em pornografia, com o apoio do Lyrio.',
+  empty: 'Ainda não há artigos neste idioma.',
+}
+
+export type UiStrings = typeof ptBR
