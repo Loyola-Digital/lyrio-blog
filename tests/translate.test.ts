@@ -2,7 +2,6 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Sql } from '@/lib/db'
 import { runPool } from '@/lib/pool'
 import { createPost, missingLocales, publish } from '@/lib/posts'
-import { getGlossary } from '@/lib/settings'
 import { translateOne } from '@/lib/translate-one'
 import { src, testSql } from './helpers/db'
 
@@ -32,7 +31,6 @@ describe('translateOne', () => {
   let pubId: string
   const fakeDeps = () => ({
     translate: vi.fn(async (s: any, l: string) => ({ ...s, slug: `${l}-slug`, title: `${l} title` })),
-    makeGlossary: vi.fn(async () => ({ Socorro: 'Hilfe' })),
   })
 
   beforeEach(async () => {
@@ -50,17 +48,12 @@ describe('translateOne', () => {
     expect(deps.translate).not.toHaveBeenCalled()
   })
 
-  it('traduz, grava no rev atual e gera o glossário só uma vez', async () => {
+  it('traduz direto do português e grava no rev atual', async () => {
     const deps = fakeDeps()
     const out = await translateOne(sql, pubId, 'de', 'm/x', deps)
     expect(out.slug).toBe('de-slug')
     expect(out.paths).toContain('/de')
     expect(await missingLocales(sql, pubId)).not.toContain('de')
-    expect(deps.makeGlossary).toHaveBeenCalledTimes(1)
-    expect(deps.makeGlossary).toHaveBeenCalledWith('de', 'm/x')
-    expect(await getGlossary(sql, 'de')).toEqual({ Socorro: 'Hilfe' })
-    await translateOne(sql, pubId, 'de', 'm/x', deps)
-    expect(deps.makeGlossary).toHaveBeenCalledTimes(1)
-    expect(deps.translate).toHaveBeenLastCalledWith(expect.objectContaining({ title: 'Como parar' }), 'de', { Socorro: 'Hilfe' }, 'm/x')
+    expect(deps.translate).toHaveBeenLastCalledWith(expect.objectContaining({ title: 'Como parar' }), 'de', 'm/x')
   })
 })

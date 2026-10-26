@@ -84,10 +84,7 @@ Regras do prompt:
 
 **Tradução.** Cada um dos 41 idiomas é traduzido a partir do pt-BR, incluindo título, slug localizado e meta description. A tradução é adaptada, não literal, e mantém a voz e os nomes das funções conforme aparecem no app. Cada idioma vai ao ar assim que fica pronto, sem revisão humana. A v1 não tem checagem automática por um segundo modelo, porque traduzir um texto já revisado raramente introduz afirmações novas *(decisão minha)*. Um idioma sem tradução não aparece nas listagens nem no hreflang. O admin mostra o progresso e tem um botão **"Traduzir faltantes"** para tentar de novo os idiomas que falharam.
 
-**Glossário por idioma (decisão minha).** Ainda não se sabe se o app está traduzido nos 42 idiomas nem se os textos dele podem ser exportados. Por isso:
-- Na primeira vez, a IA gera um glossário com os nomes das funções do app (Socorro, Opção Nuclear, Arsenal, Jornada, níveis…) em cada idioma.
-- O glossário fica guardado e entra em toda tradução, para o mesmo termo sair igual em todos os artigos.
-- O admin permite substituir esses nomes pelos textos oficiais do app, quando o time conseguir exportá-los.
+**Nomes das funções nas traduções (decisão do usuário, 26/10):** tradução direta, sem glossário. "Opção Nuclear" vira "Nuclear Option" em inglês, e assim por diante; o prompt pede para traduzir sempre do mesmo jeito.
 
 **Modelos (decisão do usuário, 26/10):** a IA roda pelo **OpenRouter**, e a pessoa **escolhe o modelo na hora**:
 - no formulário "Com IA", o padrão é `anthropic/claude-opus-5.5`;

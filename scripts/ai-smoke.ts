@@ -2,7 +2,7 @@
 // node --env-file=.env.local --import tsx scripts/ai-smoke.ts
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { DEFAULT_TRANSLATOR_MODEL, DEFAULT_WRITER_MODEL } from '@/lib/ai/openrouter'
-import { makeGlossary, translateVersion } from '@/lib/ai/translate'
+import { translateVersion } from '@/lib/ai/translate'
 import { writeArticle } from '@/lib/ai/write'
 
 const ABOUT = `O Lyrio é um app para iPhone e Android que ajuda a sair do vício em pornografia.
@@ -13,7 +13,7 @@ async function main() {
   const out: Record<string, unknown> = { 'pt-BR': pt }
   for (const locale of ['de', 'ja', 'ar'] as const) {
     const model = process.env.TRANSLATOR ?? DEFAULT_TRANSLATOR_MODEL
-    out[locale] = await translateVersion(pt, locale, await makeGlossary(locale, model), model)
+    out[locale] = await translateVersion(pt, locale, model)
   }
   mkdirSync('.superpowers', { recursive: true })
   writeFileSync('.superpowers/ai-smoke.json', JSON.stringify(out, null, 2))

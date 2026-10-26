@@ -10,7 +10,3 @@ export const DraftSchema = z.strictObject({
   meta_description: z.string(),
 })
 export type Draft = z.infer<typeof DraftSchema>
-
-export const GlossarySchema = z.strictObject({
-  terms: z.array(z.strictObject({ source: z.string(), target: z.string() })),
-})

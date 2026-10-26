@@ -4,17 +4,16 @@ import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { AiError, isModelId } from '@/lib/ai/openrouter'
-import { parseGlossaryText } from '@/lib/ai/translate'
 import { writeArticle } from '@/lib/ai/write'
 import { checkPassword, SESSION_COOKIE, SESSION_DAYS, signSession } from '@/lib/auth'
 import { getSql } from '@/lib/db'
 import { parseEditorForm } from '@/lib/editor-form'
-import { isLocale, SOURCE_LOCALE, type Locale } from '@/lib/locales'
+import { type Locale } from '@/lib/locales'
 import {
   createPost, deletePost, getPostForEdit, listVersionsOf, missingLocales, publish, unpublish, updateSource,
 } from '@/lib/posts'
 import { pathsFor } from '@/lib/revalidate'
-import { getAbout, setAbout, setGlossary } from '@/lib/settings'
+import { getAbout, setAbout } from '@/lib/settings'
 import type { PostType } from '@/lib/types'
 import { requireAdmin } from './guard'
 
@@ -126,12 +125,4 @@ export async function saveAbout(_prev: Msg, fd: FormData): Promise<Msg> {
   await setAbout(getSql(), String(fd.get('about') ?? '').trim())
   revalidatePath('/llms.txt')
   return { ok: 'Salvo.' }
-}
-
-export async function saveGlossary(_prev: Msg, fd: FormData): Promise<Msg> {
-  await requireAdmin()
-  const locale = String(fd.get('locale') ?? '')
-  if (!isLocale(locale) || locale === SOURCE_LOCALE) return { error: 'Idioma inválido.' }
-  await setGlossary(getSql(), locale, parseGlossaryText(String(fd.get('terms') ?? '')))
-  return { ok: 'Glossário salvo. Vale para as próximas traduções.' }
 }

@@ -27,5 +27,3 @@ create table if not exists post_versions (
 );
 
 create table if not exists settings (key text primary key, value text not null);
-
-create table if not exists glossary (locale text primary key, terms jsonb not null);

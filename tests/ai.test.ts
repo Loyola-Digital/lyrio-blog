@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 import { chatJson, isModelId, jsonSchemaFor, listModels } from '@/lib/ai/openrouter'
 import { DraftSchema } from '@/lib/ai/schemas'
-import { FEATURE_TERMS, formatGlossaryText, parseGlossaryText, translatorUser } from '@/lib/ai/translate'
+import { TRANSLATOR_SYSTEM, translatorUser } from '@/lib/ai/translate'
 import { toVersionFields, writerSystem } from '@/lib/ai/write'
 import { src } from './helpers/db'
 
@@ -98,16 +98,15 @@ describe('escrita e tradução', () => {
     expect(sys).toContain('Nunca prometa cura')
   })
 
-  it('monta o pedido de tradução com idioma e glossário', () => {
-    const u = translatorUser(src(), 'de', { 'Opção Nuclear': 'Nuklearoption' })
+  it('monta o pedido de tradução com idioma, sem glossário', () => {
+    const u = translatorUser(src(), 'de')
     expect(u).toContain('German')
-    expect(u).toContain('Opção Nuclear → Nuklearoption')
     expect(u).toContain('"body_md"')
+    expect(u).not.toMatch(/glossary/i)
   })
 
-  it('lê e escreve o glossário como texto', () => {
-    expect(parseGlossaryText('Socorro = Hilfe\n\n Opção Nuclear=Nuklearoption \nlixo')).toEqual({ Socorro: 'Hilfe', 'Opção Nuclear': 'Nuklearoption' })
-    expect(parseGlossaryText(formatGlossaryText({ A: 'b' }))).toEqual({ A: 'b' })
-    expect(FEATURE_TERMS).toContain('Opção Nuclear')
+  it('manda traduzir os nomes das funções direto', () => {
+    expect(TRANSLATOR_SYSTEM).toContain('Nuclear Option')
+    expect(TRANSLATOR_SYSTEM).not.toMatch(/glossary/i)
   })
 })
