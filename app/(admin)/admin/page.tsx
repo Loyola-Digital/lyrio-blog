@@ -6,7 +6,7 @@ import { logout } from './actions'
 import { requireAdmin } from './guard'
 import { TYPE_LABEL } from './labels'
 
-const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
+const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })
 
 export default async function AdminHome() {
   await requireAdmin()

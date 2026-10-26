@@ -1,21 +1,23 @@
-import type { Sql } from './db'
+import type { Row, Sql } from './db'
 import { SOURCE_LOCALE, TARGET_LOCALES, type Locale } from './locales'
 import { slugify } from './slug'
 import type { Post, PostType, Version, VersionFields } from './types'
 
+const NO_POST = '00000000-0000-0000-0000-000000000000' // post novo ainda sem id: nenhuma versão a ignorar
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
-const toPost = (r: Record<string, any>): Post => ({
+const toPost = (r: Row): Post => ({
   id: r.id, type: r.type, topic: r.topic, coverUrl: r.cover_url, status: r.status, rev: r.rev,
   createdAt: r.created_at, updatedAt: r.updated_at, publishedAt: r.published_at,
 })
 
-const toVersion = (r: Record<string, any>): Version => ({
+const toVersion = (r: Row): Version => ({
   postId: r.post_id, locale: r.locale, rev: r.v_rev, slug: r.slug, title: r.title, headline: r.headline,
   summary: r.summary, bodyMd: r.body_md, faq: r.faq, metaDescription: r.meta_description, updatedAt: r.v_updated_at,
 })
 
-async function uniqueSlug(sql: Sql, locale: Locale, base: string, postId: string): Promise<string> {
+async function uniqueSlug(sql: Sql, locale: Locale, rawBase: string, postId: string): Promise<string> {
+  const base = rawBase || 'artigo' // título só com símbolos não pode virar /pt-BR/
   const rows = await sql`select slug from post_versions
     where locale = ${locale} and post_id <> ${postId} and (slug = ${base} or slug like ${base + '-%'})`
   const taken = new Set(rows.map((r) => r.slug))
@@ -38,10 +40,17 @@ export async function createPost(
   sql: Sql,
   input: { type: PostType; topic?: string | null; coverUrl?: string | null; source: VersionFields },
 ): Promise<string> {
-  const [{ id }] = await sql`insert into posts (type, topic, cover_url)
-    values (${input.type}, ${input.topic ?? null}, ${input.coverUrl ?? null}) returning id`
-  const slug = await uniqueSlug(sql, SOURCE_LOCALE, input.source.slug || slugify(input.source.title), id)
-  await upsertVersion(sql, id, SOURCE_LOCALE, 0, slug, input.source)
+  const f = input.source
+  const slug = await uniqueSlug(sql, SOURCE_LOCALE, f.slug || slugify(f.title), NO_POST)
+  // post e versão pt-BR num comando só: ou entram os dois, ou nenhum
+  const [{ id }] = await sql`with p as (
+      insert into posts (type, topic, cover_url) values (${input.type}, ${input.topic ?? null}, ${input.coverUrl ?? null})
+      returning id
+    )
+    insert into post_versions (post_id, locale, rev, slug, title, headline, summary, body_md, faq, meta_description)
+    select p.id, ${SOURCE_LOCALE}, 0, ${slug}, ${f.title}, ${f.headline}, ${f.summary}, ${f.bodyMd},
+      ${JSON.stringify(f.faq)}::text::jsonb, ${f.metaDescription}
+    from p returning post_id as id`
   return id
 }
 
@@ -118,13 +127,15 @@ export async function getPublishedVersion(
   return { post: toPost(r), version: toVersion(r), alternates: await listVersionsOf(sql, r.id) }
 }
 
+// Só o que as listagens mostram (home e "Leia também"), sem o texto inteiro.
 export async function listPublished(sql: Sql, locale: Locale) {
-  const rows = await sql`select p.type, p.cover_url, p.published_at, v.post_id, v.locale, v.rev as v_rev, v.slug,
-      v.title, v.headline, v.summary, v.body_md, v.faq, v.meta_description, v.updated_at as v_updated_at
+  const rows = await sql`select p.type, p.cover_url, p.published_at, v.post_id, v.slug, v.title, v.headline, v.summary
     from post_versions v join posts p on p.id = v.post_id
     where v.locale = ${locale} and p.status = 'published' order by p.published_at desc`
   return rows.map((r) => ({
-    ...toVersion(r), type: r.type as PostType, coverUrl: r.cover_url as string | null, publishedAt: r.published_at as Date,
+    postId: r.post_id as string, slug: r.slug as string, title: r.title as string, headline: r.headline as string,
+    summary: r.summary as string, type: r.type as PostType, coverUrl: r.cover_url as string | null,
+    publishedAt: r.published_at as Date,
   }))
 }
 

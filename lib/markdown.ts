@@ -1,7 +1,8 @@
 import MarkdownIt from 'markdown-it'
 
 // html: false — corpo vem da IA e do admin; HTML cru é escapado
-const md = new MarkdownIt({ html: false, linkify: true, typographer: true })
+// typographer desligado: ele põe aspas inglesas em todos os idiomas (alemão usa „“, francês « »)
+const md = new MarkdownIt({ html: false, linkify: true, typographer: false })
 
 export function renderMarkdown(src: string): string {
   return md.render(src)

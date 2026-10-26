@@ -31,6 +31,7 @@ describe('parseEditorForm', () => {
     expect(parseEditorForm(fd({ ...base, title: ' ' }))).toEqual({ ok: false, error: 'Preencha o título.' })
     expect(parseEditorForm(fd({ ...base, bodyMd: '' }))).toEqual({ ok: false, error: 'Escreva o texto.' })
     expect(parseEditorForm(fd({ ...base, type: 'x' }))).toEqual({ ok: false, error: 'Tipo inválido.' })
+    expect(parseEditorForm(fd({ ...base, title: '???' }))).toEqual({ ok: false, error: 'O título precisa ter letras ou números.' })
   })
 
   it('ignora FAQ quebrado', () => {

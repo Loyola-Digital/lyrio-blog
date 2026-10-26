@@ -24,6 +24,7 @@ export function parseEditorForm(fd: FormData): Parsed {
   const bodyMd = get('bodyMd')
   if (!TYPES.includes(type)) return { ok: false, error: 'Tipo inválido.' }
   if (!title) return { ok: false, error: 'Preencha o título.' }
+  if (!slugify(title)) return { ok: false, error: 'O título precisa ter letras ou números.' }
   if (!bodyMd) return { ok: false, error: 'Escreva o texto.' }
   return {
     ok: true,

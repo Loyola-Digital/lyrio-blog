@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
-import { chatJson, isModelId, jsonSchemaFor } from '@/lib/ai/openrouter'
+import { chatJson, isModelId, jsonSchemaFor, listModels } from '@/lib/ai/openrouter'
 import { DraftSchema } from '@/lib/ai/schemas'
 import { FEATURE_TERMS, formatGlossaryText, parseGlossaryText, translatorUser } from '@/lib/ai/translate'
 import { toVersionFields, writerSystem } from '@/lib/ai/write'
@@ -45,6 +45,23 @@ describe('chatJson', () => {
       .rejects.toThrow('Erro do OpenRouter: Provider returned error')
     delete process.env.OPENROUTER_API_KEY
     await expect(run(ok('{"a":1}'))).rejects.toThrow('OPENROUTER_API_KEY não configurada.')
+  })
+})
+
+describe('listModels', () => {
+  it('filtra os modelos com saída estruturada e guarda a lista em memória', async () => {
+    const data = [
+      { id: 'b/x', name: 'B', supported_parameters: ['structured_outputs'], pricing: { prompt: '0.000002', completion: '0.00001' } },
+      { id: 'a/y', name: 'A', supported_parameters: ['structured_outputs'], pricing: { prompt: '0', completion: '0' } },
+      { id: 'a/y:batch', name: 'A batch', supported_parameters: ['structured_outputs'], pricing: {} },
+      { id: 'c/z', name: 'C', supported_parameters: [], pricing: {} },
+    ]
+    const f = vi.fn(async () => new Response(JSON.stringify({ data })))
+    const first = await listModels(f as any)
+    expect(first.map((m) => m.id)).toEqual(['a/y', 'b/x'])
+    expect(first[1]).toMatchObject({ prompt: 2, completion: 10 })
+    await listModels(f as any)
+    expect(f).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -30,6 +30,21 @@ describe('posts', () => {
     expect((await getPostForEdit(sql, a))!.source).toMatchObject({ slug: 'como-parar', title: 'Novo' })
   })
 
+  it('título sem letras nunca gera slug vazio', async () => {
+    const id = await createPost(sql, { type: 'artigo', source: src({ slug: '', title: '!!!' }) })
+    expect((await getPostForEdit(sql, id))!.source.slug).toBe('artigo')
+    await publish(sql, id)
+    expect(await saveTranslation(sql, id, 'de', 1, src({ slug: '', title: '…' }))).toEqual({ slug: 'artigo' })
+  })
+
+  it('listagem não carrega o texto inteiro', async () => {
+    const id = await createPost(sql, { type: 'artigo', source: src() })
+    await publish(sql, id)
+    const [row] = await listPublished(sql, 'pt-BR')
+    expect(row).toMatchObject({ postId: id, slug: 'como-parar', title: 'Como parar', summary: 's', type: 'artigo' })
+    expect(row).not.toHaveProperty('bodyMd')
+  })
+
   it('publish incrementa rev e fixa published_at só na primeira vez', async () => {
     const id = await createPost(sql, { type: 'artigo', source: src() })
     expect(await publish(sql, id)).toEqual({ rev: 1 })

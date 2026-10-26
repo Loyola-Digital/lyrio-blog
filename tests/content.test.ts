@@ -11,6 +11,10 @@ describe('markdown', () => {
     expect(renderMarkdown('<script>alert(1)</script>')).not.toContain('<script>')
   })
 
+  it('não troca aspas e traços (cada idioma tem as suas)', () => {
+    expect(renderMarkdown('"oi" -- (c)')).toContain('&quot;oi&quot; -- (c)')
+  })
+
   it('renderiza subtítulos', () => {
     expect(renderMarkdown('## Por quê?')).toContain('<h2>Por quê?</h2>')
   })

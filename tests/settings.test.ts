@@ -18,5 +18,7 @@ describe('settings', () => {
     await setGlossary(sql, 'ja', { Socorro: '救助' })
     expect(await getGlossary(sql, 'de')).toEqual({ 'Opção Nuclear': 'Nuklearoption' })
     expect(await getGlossary(sql, 'ja')).toEqual({ Socorro: '救助' })
+    await setGlossary(sql, 'de', {})
+    expect(await getGlossary(sql, 'de')).toBeNull() // vazio = gerar de novo na próxima tradução
   })
 })

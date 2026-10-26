@@ -18,7 +18,7 @@ Checklist para colocar `blog.lyrioapp.com` no ar. Tudo em **contas do Lyrio**, p
 | `BLOB_READ_WRITE_TOKEN` | vem do Blob |
 | `OPENROUTER_API_KEY` | chave do OpenRouter |
 | `ADMIN_PASSWORD` | senha do time, com 16 caracteres ou mais |
-| `SESSION_SECRET` | `openssl rand -hex 32` |
+| `SESSION_SECRET` | `openssl rand -hex 32`. Trocar este valor desloga todo mundo do admin; é o jeito de derrubar sessões. |
 | `SITE_URL` | `https://blog.lyrioapp.com` |
 
 ## 2. Banco de produção
@@ -50,10 +50,14 @@ Faça o deploy **depois** de migrar, porque o build gera as páginas iniciais le
 
 ## 5. Conteúdo de lançamento
 
-1. O time revisa **Sobre o Lyrio** no admin. Pontos a confirmar:
-   - se os pontos de nível sobem com os dias limpos;
+1. O time revisa **Sobre o Lyrio** no admin. A IA só cita o que está lá, então tudo precisa ser verdade. Pontos a confirmar:
+   - se os pontos de nível sobem com os dias limpos e com o uso das ferramentas;
    - se o ícone de gráfico da aba Apps é de estatísticas de uso;
-   - o que é a conquista "Usuário Desktop".
+   - o exemplo de regra de bloqueio (5 minutos liberados, depois 25 de bloqueio);
+   - que dá para resetar a sequência e que o app mostra o tempo desde o último recomeço;
+   - que o progresso dos jogos conta como dias limpos de sequência;
+   - os selos ("Ativo na Comunidade", "Elite da Comunidade") e as conquistas citadas;
+   - o que é a conquista "Usuário Desktop" (hoje fica de fora do texto).
 2. `npm run launch:generate` gera os 20 rascunhos (`MODEL=...` troca o modelo). Se algum falhar, rode de novo: ele pula os que já existem.
 3. O time **lê e publica** cada rascunho. As traduções saem sozinhas no clique.
 

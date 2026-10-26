@@ -1,44 +1,41 @@
 'use client'
 
-import { useEffect, useId, useState } from 'react'
+import { useId, useState, useSyncExternalStore } from 'react'
 import type { ModelOption } from '@/lib/ai/openrouter'
 
 const price = (n: number) => (Number.isFinite(n) ? `$${n.toFixed(2)}` : '?')
 
-export function ModelPicker(props: {
-  name: string
-  storageKey: string
-  defaultModel: string
-  models: ModelOption[]
-  value?: string
-  onChange?: (model: string) => void
-}) {
-  const listId = useId()
-  const [value, setValue] = useState(props.value || props.defaultModel)
+export function readSavedModel(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
 
-  useEffect(() => {
-    if (props.value) return
-    try {
-      const saved = localStorage.getItem(props.storageKey)
-      if (saved) {
-        setValue(saved)
-        props.onChange?.(saved)
-      }
-    } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+const subscribe = (onChange: () => void) => {
+  window.addEventListener('storage', onChange)
+  return () => window.removeEventListener('storage', onChange)
+}
 
-  function change(v: string) {
-    setValue(v)
-    props.onChange?.(v)
+// Último modelo escolhido (localStorage), sem setState em effect: no servidor vale o padrão.
+export function useSavedModel(key: string, fallback: string): [string, (model: string) => void] {
+  const saved = useSyncExternalStore(subscribe, () => readSavedModel(key), () => null)
+  const [typed, setTyped] = useState<string | null>(null)
+  const set = (model: string) => {
+    setTyped(model)
     try {
-      localStorage.setItem(props.storageKey, v)
+      localStorage.setItem(key, model)
     } catch {}
   }
+  return [typed ?? saved ?? fallback, set]
+}
 
+export function ModelPicker(props: { name: string; value: string; onChange: (model: string) => void; models: ModelOption[] }) {
+  const listId = useId()
   return (
     <>
-      <input name={props.name} list={listId} value={value} onChange={(e) => change(e.target.value)} spellCheck={false} required />
+      <input name={props.name} list={listId} value={props.value} onChange={(e) => props.onChange(e.target.value)} spellCheck={false} required />
       <datalist id={listId}>
         {props.models.map((m) => (
           <option key={m.id} value={m.id}>{`${m.name} · ${price(m.prompt)}/${price(m.completion)} por 1M`}</option>

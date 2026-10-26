@@ -67,15 +67,22 @@ export async function chatJson<T>(
 }
 
 export type ModelOption = { id: string; name: string; prompt: number; completion: number }
+type OpenRouterModel = { id: string; name: string; supported_parameters?: string[]; pricing?: { prompt?: string; completion?: string } }
 
-export async function listModels(): Promise<ModelOption[]> {
+// Em memória, não no cache de dados do Next: o catálogo passa do limite de 2 MB por entrada.
+let catalog: { at: number; models: ModelOption[] } | null = null
+
+export async function listModels(fetchImpl: typeof fetch = fetch): Promise<ModelOption[]> {
+  if (catalog && Date.now() - catalog.at < 3600_000) return catalog.models
   try {
-    const res = await fetch(`${API}/models`, { next: { revalidate: 3600 } } as RequestInit)
+    const res = await fetchImpl(`${API}/models`, { cache: 'no-store' })
     const { data } = await res.json()
-    return (data as any[])
+    const models = (data as OpenRouterModel[])
       .filter((m) => m.supported_parameters?.includes('structured_outputs') && !m.id.endsWith(':batch'))
       .map((m) => ({ id: m.id, name: m.name, prompt: Number(m.pricing?.prompt) * 1e6, completion: Number(m.pricing?.completion) * 1e6 }))
       .sort((a, b) => a.name.localeCompare(b.name))
+    catalog = { at: Date.now(), models }
+    return models
   } catch {
     return [] // sem lista, o campo ainda aceita o id digitado
   }

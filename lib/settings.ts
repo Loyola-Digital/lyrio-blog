@@ -17,6 +17,10 @@ export async function getGlossary(sql: Sql, locale: Locale): Promise<Record<stri
 }
 
 export async function setGlossary(sql: Sql, locale: Locale, map: Record<string, string>): Promise<void> {
+  if (!Object.keys(map).length) {
+    await sql`delete from glossary where locale = ${locale}` // vazio: a IA gera de novo na próxima tradução
+    return
+  }
   await sql`insert into glossary (locale, terms) values (${locale}, ${JSON.stringify(map)}::text::jsonb)
     on conflict (locale) do update set terms = excluded.terms`
 }

@@ -6,9 +6,10 @@ import type { ModelOption } from '@/lib/ai/openrouter'
 import { NATIVE_NAME, TARGET_LOCALES, type Locale } from '@/lib/locales'
 import { runPool } from '@/lib/pool'
 import { getMissing } from '../../actions'
-import { ModelPicker } from '../../ModelPicker'
+import { ModelPicker, readSavedModel, useSavedModel } from '../../ModelPicker'
 
 const TOTAL = TARGET_LOCALES.length
+const KEY = 'lyrio.translatorModel'
 
 export function TranslationPanel(props: {
   postId: string
@@ -19,7 +20,7 @@ export function TranslationPanel(props: {
 }) {
   const router = useRouter()
   const [missing, setMissing] = useState(props.missing)
-  const [model, setModel] = useState(props.defaultModel)
+  const [model, setModel] = useSavedModel(KEY, props.defaultModel)
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null)
   const [lastError, setLastError] = useState('')
   const started = useRef(false)
@@ -52,15 +53,8 @@ export function TranslationPanel(props: {
   useEffect(() => {
     if (!props.autoTranslate || started.current) return
     started.current = true
-    // o ModelPicker carrega o último modelo do localStorage; espera um tique para usá-lo
-    const saved = (() => {
-      try {
-        return localStorage.getItem('lyrio.translatorModel')
-      } catch {
-        return null
-      }
-    })()
-    run(props.missing, saved || model)
+    // na hidratação o hook ainda devolve o padrão; lê a escolha salva direto
+    run(props.missing, readSavedModel(KEY) || model)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -86,7 +80,7 @@ export function TranslationPanel(props: {
       )}
       {lastError && <p className="adm-error">Último erro: {lastError}</p>}
       <label>Modelo da tradução</label>
-      <ModelPicker name="translatorModel" storageKey="lyrio.translatorModel" defaultModel={props.defaultModel} models={props.models} onChange={setModel} />
+      <ModelPicker name="translatorModel" value={model} onChange={setModel} models={props.models} />
     </section>
   )
 }
