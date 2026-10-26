@@ -119,6 +119,11 @@ h1 { font-weight: 500; font-size: clamp(38px, 5.2vw, 60px); line-height: 1.06; l
 .foot { border-block-start: 1px solid var(--line); font-family: var(--sans-stack); font-size: 12px; color: var(--soft); }
 .foot .wrap { display: flex; justify-content: space-between; padding-block: 24px 40px; }
 
+/* 404 */
+.notfound { padding-block: 96px 120px; max-width: 760px; }
+.notfound .brand { margin-block-end: 48px; }
+.notfound h1 { margin-block: 14px 16px; }
+
 /* escritas com glifos mais altos */
 :lang(ur) body, :lang(ur) .prose p, :lang(ur) .prose li { line-height: 2.2; }
 :lang(ja), :lang(zh-Hans), :lang(zh-Hant) { line-break: strict; }

@@ -21,7 +21,10 @@
     "language": "Language",
     "home_title": "Lyrio Articles",
     "home_description": "Guides, questions and articles to help you quit porn addiction, with support from Lyrio.",
-    "empty": "There are no articles in this language yet."
+    "empty": "There are no articles in this language yet.",
+    "not_found_title": "Page not found",
+    "not_found_text": "This address does not exist or the article was taken down.",
+    "back_home": "See all articles"
   },
   "es": {
     "blog_name": "Artículos",
@@ -45,7 +48,10 @@
     "language": "Idioma",
     "home_title": "Artículos de Lyrio",
     "home_description": "Guías, preguntas y artículos para salir de la adicción a la pornografía, con el apoyo de Lyrio.",
-    "empty": "Todavía no hay artículos en este idioma."
+    "empty": "Todavía no hay artículos en este idioma.",
+    "not_found_title": "Página no encontrada",
+    "not_found_text": "Esta dirección no existe o el artículo ya no está disponible.",
+    "back_home": "Ver todos los artículos"
   },
   "zh-Hans": {
     "blog_name": "文章",
@@ -69,7 +75,10 @@
     "language": "语言",
     "home_title": "Lyrio 文章",
     "home_description": "帮助你摆脱色情成瘾的指南、问答和文章，由 Lyrio 提供支持。",
-    "empty": "该语言暂无文章。"
+    "empty": "该语言暂无文章。",
+    "not_found_title": "页面未找到",
+    "not_found_text": "该地址不存在，或文章已下线。",
+    "back_home": "查看全部文章"
   },
   "zh-Hant": {
     "blog_name": "文章",
@@ -93,7 +102,10 @@
     "language": "語言",
     "home_title": "Lyrio 文章",
     "home_description": "幫助你擺脫色情成癮的指南、問答和文章，由 Lyrio 提供支持。",
-    "empty": "此語言尚無文章。"
+    "empty": "此語言尚無文章。",
+    "not_found_title": "找不到頁面",
+    "not_found_text": "此網址不存在，或文章已下架。",
+    "back_home": "查看所有文章"
   },
   "hi": {
     "blog_name": "लेख",
@@ -117,7 +129,10 @@
     "language": "भाषा",
     "home_title": "Lyrio के लेख",
     "home_description": "पोर्नोग्राफ़ी की लत से बाहर निकलने के लिए गाइड, सवाल-जवाब और लेख, Lyrio के साथ।",
-    "empty": "इस भाषा में अभी कोई लेख नहीं है।"
+    "empty": "इस भाषा में अभी कोई लेख नहीं है।",
+    "not_found_title": "पेज नहीं मिला",
+    "not_found_text": "यह पता मौजूद नहीं है या लेख हटा दिया गया है।",
+    "back_home": "सभी लेख देखें"
   },
   "ar": {
     "blog_name": "مقالات",
@@ -141,7 +156,10 @@
     "language": "اللغة",
     "home_title": "مقالات Lyrio",
     "home_description": "أدلة وأسئلة ومقالات للتحرر من إدمان الإباحية، بدعم من Lyrio.",
-    "empty": "لا توجد مقالات بهذه اللغة بعد."
+    "empty": "لا توجد مقالات بهذه اللغة بعد.",
+    "not_found_title": "الصفحة غير موجودة",
+    "not_found_text": "هذا العنوان غير موجود أو تمت إزالة المقال.",
+    "back_home": "عرض كل المقالات"
   },
   "fr": {
     "blog_name": "Articles",
@@ -165,7 +183,10 @@
     "language": "Langue",
     "home_title": "Articles Lyrio",
     "home_description": "Guides, questions et articles pour sortir de l'addiction à la pornographie, avec le soutien de Lyrio.",
-    "empty": "Aucun article dans cette langue pour le moment."
+    "empty": "Aucun article dans cette langue pour le moment.",
+    "not_found_title": "Page introuvable",
+    "not_found_text": "Cette adresse n'existe pas ou l'article a été retiré.",
+    "back_home": "Voir tous les articles"
   },
   "bn": {
     "blog_name": "নিবন্ধ",
@@ -189,7 +210,10 @@
     "language": "ভাষা",
     "home_title": "Lyrio-এর নিবন্ধ",
     "home_description": "পর্নোগ্রাফির আসক্তি থেকে বেরিয়ে আসার গাইড, প্রশ্নোত্তর ও নিবন্ধ, Lyrio-এর সহায়তায়।",
-    "empty": "এই ভাষায় এখনও কোনো নিবন্ধ নেই।"
+    "empty": "এই ভাষায় এখনও কোনো নিবন্ধ নেই।",
+    "not_found_title": "পেজটি পাওয়া যায়নি",
+    "not_found_text": "এই ঠিকানাটি নেই অথবা নিবন্ধটি সরিয়ে নেওয়া হয়েছে।",
+    "back_home": "সব নিবন্ধ দেখুন"
   },
   "ru": {
     "blog_name": "Статьи",
@@ -213,7 +237,10 @@
     "language": "Язык",
     "home_title": "Статьи Lyrio",
     "home_description": "Руководства, вопросы и статьи о том, как избавиться от порнозависимости, при поддержке Lyrio.",
-    "empty": "На этом языке пока нет статей."
+    "empty": "На этом языке пока нет статей.",
+    "not_found_title": "Страница не найдена",
+    "not_found_text": "Такого адреса нет, или статья была снята с публикации.",
+    "back_home": "Все статьи"
   },
   "id": {
     "blog_name": "Artikel",
@@ -237,7 +264,10 @@
     "language": "Bahasa",
     "home_title": "Artikel Lyrio",
     "home_description": "Panduan, tanya jawab, dan artikel untuk lepas dari kecanduan pornografi, bersama Lyrio.",
-    "empty": "Belum ada artikel dalam bahasa ini."
+    "empty": "Belum ada artikel dalam bahasa ini.",
+    "not_found_title": "Halaman tidak ditemukan",
+    "not_found_text": "Alamat ini tidak ada atau artikelnya sudah diturunkan.",
+    "back_home": "Lihat semua artikel"
   },
   "ur": {
     "blog_name": "مضامین",
@@ -261,7 +291,10 @@
     "language": "زبان",
     "home_title": "Lyrio کے مضامین",
     "home_description": "فحش مواد کی لت سے نکلنے کے لیے رہنما، سوالات اور مضامین، Lyrio کے ساتھ۔",
-    "empty": "اس زبان میں ابھی کوئی مضمون نہیں۔"
+    "empty": "اس زبان میں ابھی کوئی مضمون نہیں۔",
+    "not_found_title": "صفحہ نہیں ملا",
+    "not_found_text": "یہ پتہ موجود نہیں یا مضمون ہٹا دیا گیا ہے۔",
+    "back_home": "تمام مضامین دیکھیں"
   },
   "de": {
     "blog_name": "Artikel",
@@ -285,7 +318,10 @@
     "language": "Sprache",
     "home_title": "Lyrio-Artikel",
     "home_description": "Ratgeber, Fragen und Artikel, um von der Pornosucht loszukommen – mit Unterstützung von Lyrio.",
-    "empty": "In dieser Sprache gibt es noch keine Artikel."
+    "empty": "In dieser Sprache gibt es noch keine Artikel.",
+    "not_found_title": "Seite nicht gefunden",
+    "not_found_text": "Diese Adresse existiert nicht oder der Artikel wurde entfernt.",
+    "back_home": "Alle Artikel ansehen"
   },
   "ja": {
     "blog_name": "記事",
@@ -309,7 +345,10 @@
     "language": "言語",
     "home_title": "Lyrioの記事",
     "home_description": "ポルノ依存から抜け出すためのガイド、Q&A、記事。Lyrioがサポートします。",
-    "empty": "この言語の記事はまだありません。"
+    "empty": "この言語の記事はまだありません。",
+    "not_found_title": "ページが見つかりません",
+    "not_found_text": "このアドレスは存在しないか、記事が削除されました。",
+    "back_home": "すべての記事を見る"
   },
   "mr": {
     "blog_name": "लेख",
@@ -333,7 +372,10 @@
     "language": "भाषा",
     "home_title": "Lyrio चे लेख",
     "home_description": "पॉर्नोग्राफीच्या व्यसनातून बाहेर पडण्यासाठी मार्गदर्शक, प्रश्नोत्तरे आणि लेख, Lyrio सोबत.",
-    "empty": "या भाषेत अद्याप कोणतेही लेख नाहीत."
+    "empty": "या भाषेत अद्याप कोणतेही लेख नाहीत.",
+    "not_found_title": "पान सापडले नाही",
+    "not_found_text": "हा पत्ता अस्तित्वात नाही किंवा लेख काढून टाकला आहे.",
+    "back_home": "सर्व लेख पहा"
   },
   "te": {
     "blog_name": "వ్యాసాలు",
@@ -357,7 +399,10 @@
     "language": "భాష",
     "home_title": "Lyrio వ్యాసాలు",
     "home_description": "పోర్నోగ్రఫీ వ్యసనం నుంచి బయటపడటానికి గైడ్‌లు, ప్రశ్నలు, వ్యాసాలు — Lyrio తోడుగా.",
-    "empty": "ఈ భాషలో ఇంకా వ్యాసాలు లేవు."
+    "empty": "ఈ భాషలో ఇంకా వ్యాసాలు లేవు.",
+    "not_found_title": "పేజీ కనబడలేదు",
+    "not_found_text": "ఈ చిరునామా లేదు లేదా వ్యాసం తొలగించబడింది.",
+    "back_home": "అన్ని వ్యాసాలు చూడండి"
   },
   "bg": {
     "blog_name": "Статии",
@@ -381,7 +426,10 @@
     "language": "Език",
     "home_title": "Статии на Lyrio",
     "home_description": "Ръководства, въпроси и статии за излизане от зависимостта към порнография, с подкрепата на Lyrio.",
-    "empty": "Все още няма статии на този език."
+    "empty": "Все още няма статии на този език.",
+    "not_found_title": "Страницата не е намерена",
+    "not_found_text": "Този адрес не съществува или статията е премахната.",
+    "back_home": "Всички статии"
   },
   "hr": {
     "blog_name": "Članci",
@@ -405,7 +453,10 @@
     "language": "Jezik",
     "home_title": "Lyrio članci",
     "home_description": "Vodiči, pitanja i članci za izlazak iz ovisnosti o pornografiji, uz podršku Lyrija.",
-    "empty": "Još nema članaka na ovom jeziku."
+    "empty": "Još nema članaka na ovom jeziku.",
+    "not_found_title": "Stranica nije pronađena",
+    "not_found_text": "Ova adresa ne postoji ili je članak uklonjen.",
+    "back_home": "Pogledaj sve članke"
   },
   "cs": {
     "blog_name": "Články",
@@ -429,7 +480,10 @@
     "language": "Jazyk",
     "home_title": "Články Lyrio",
     "home_description": "Průvodci, otázky a články, jak se dostat ze závislosti na pornografii, s podporou Lyrio.",
-    "empty": "V tomto jazyce zatím nejsou žádné články."
+    "empty": "V tomto jazyce zatím nejsou žádné články.",
+    "not_found_title": "Stránka nenalezena",
+    "not_found_text": "Tato adresa neexistuje nebo byl článek stažen.",
+    "back_home": "Zobrazit všechny články"
   },
   "da": {
     "blog_name": "Artikler",
@@ -453,7 +507,10 @@
     "language": "Sprog",
     "home_title": "Lyrio-artikler",
     "home_description": "Guides, spørgsmål og artikler om at komme ud af pornoafhængighed, med støtte fra Lyrio.",
-    "empty": "Der er endnu ingen artikler på dette sprog."
+    "empty": "Der er endnu ingen artikler på dette sprog.",
+    "not_found_title": "Siden blev ikke fundet",
+    "not_found_text": "Denne adresse findes ikke, eller artiklen er fjernet.",
+    "back_home": "Se alle artikler"
   },
   "nl": {
     "blog_name": "Artikelen",
@@ -477,7 +534,10 @@
     "language": "Taal",
     "home_title": "Lyrio-artikelen",
     "home_description": "Gidsen, vragen en artikelen om los te komen van pornoverslaving, met steun van Lyrio.",
-    "empty": "Er zijn nog geen artikelen in deze taal."
+    "empty": "Er zijn nog geen artikelen in deze taal.",
+    "not_found_title": "Pagina niet gevonden",
+    "not_found_text": "Dit adres bestaat niet of het artikel is offline gehaald.",
+    "back_home": "Alle artikelen bekijken"
   },
   "et": {
     "blog_name": "Artiklid",
@@ -501,7 +561,10 @@
     "language": "Keel",
     "home_title": "Lyrio artiklid",
     "home_description": "Juhendid, küsimused ja artiklid pornosõltuvusest vabanemiseks, Lyrio toel.",
-    "empty": "Selles keeles artikleid veel pole."
+    "empty": "Selles keeles artikleid veel pole.",
+    "not_found_title": "Lehte ei leitud",
+    "not_found_text": "Seda aadressi ei ole olemas või artikkel on eemaldatud.",
+    "back_home": "Vaata kõiki artikleid"
   },
   "fi": {
     "blog_name": "Artikkelit",
@@ -525,7 +588,10 @@
     "language": "Kieli",
     "home_title": "Lyrion artikkelit",
     "home_description": "Oppaita, kysymyksiä ja artikkeleita pornoriippuvuudesta irtautumiseen, Lyrion tuella.",
-    "empty": "Tällä kielellä ei ole vielä artikkeleita."
+    "empty": "Tällä kielellä ei ole vielä artikkeleita.",
+    "not_found_title": "Sivua ei löytynyt",
+    "not_found_text": "Tätä osoitetta ei ole tai artikkeli on poistettu.",
+    "back_home": "Näytä kaikki artikkelit"
   },
   "el": {
     "blog_name": "Άρθρα",
@@ -549,7 +615,10 @@
     "language": "Γλώσσα",
     "home_title": "Άρθρα του Lyrio",
     "home_description": "Οδηγοί, ερωτήσεις και άρθρα για να απαλλαγείς από τον εθισμό στην πορνογραφία, με τη στήριξη του Lyrio.",
-    "empty": "Δεν υπάρχουν ακόμη άρθρα σε αυτή τη γλώσσα."
+    "empty": "Δεν υπάρχουν ακόμη άρθρα σε αυτή τη γλώσσα.",
+    "not_found_title": "Η σελίδα δεν βρέθηκε",
+    "not_found_text": "Αυτή η διεύθυνση δεν υπάρχει ή το άρθρο αφαιρέθηκε.",
+    "back_home": "Δείτε όλα τα άρθρα"
   },
   "hu": {
     "blog_name": "Cikkek",
@@ -573,7 +642,10 @@
     "language": "Nyelv",
     "home_title": "Lyrio cikkek",
     "home_description": "Útmutatók, kérdések és cikkek a pornófüggőségből való kilépéshez, a Lyrio támogatásával.",
-    "empty": "Ezen a nyelven még nincsenek cikkek."
+    "empty": "Ezen a nyelven még nincsenek cikkek.",
+    "not_found_title": "Az oldal nem található",
+    "not_found_text": "Ez a cím nem létezik, vagy a cikket eltávolították.",
+    "back_home": "Az összes cikk"
   },
   "it": {
     "blog_name": "Articoli",
@@ -597,7 +669,10 @@
     "language": "Lingua",
     "home_title": "Articoli di Lyrio",
     "home_description": "Guide, domande e articoli per uscire dalla dipendenza dalla pornografia, con il supporto di Lyrio.",
-    "empty": "Non ci sono ancora articoli in questa lingua."
+    "empty": "Non ci sono ancora articoli in questa lingua.",
+    "not_found_title": "Pagina non trovata",
+    "not_found_text": "Questo indirizzo non esiste o l'articolo è stato rimosso.",
+    "back_home": "Vedi tutti gli articoli"
   },
   "lv": {
     "blog_name": "Raksti",
@@ -621,7 +696,10 @@
     "language": "Valoda",
     "home_title": "Lyrio raksti",
     "home_description": "Ceļveži, jautājumi un raksti, kā atbrīvoties no pornogrāfijas atkarības, ar Lyrio atbalstu.",
-    "empty": "Šajā valodā vēl nav rakstu."
+    "empty": "Šajā valodā vēl nav rakstu.",
+    "not_found_title": "Lapa nav atrasta",
+    "not_found_text": "Šī adrese neeksistē vai raksts ir noņemts.",
+    "back_home": "Skatīt visus rakstus"
   },
   "lt": {
     "blog_name": "Straipsniai",
@@ -645,7 +723,10 @@
     "language": "Kalba",
     "home_title": "Lyrio straipsniai",
     "home_description": "Gidai, klausimai ir straipsniai, kaip išsivaduoti iš priklausomybės nuo pornografijos, su Lyrio pagalba.",
-    "empty": "Šia kalba straipsnių dar nėra."
+    "empty": "Šia kalba straipsnių dar nėra.",
+    "not_found_title": "Puslapis nerastas",
+    "not_found_text": "Šio adreso nėra arba straipsnis pašalintas.",
+    "back_home": "Visi straipsniai"
   },
   "pl": {
     "blog_name": "Artykuły",
@@ -669,7 +750,10 @@
     "language": "Język",
     "home_title": "Artykuły Lyrio",
     "home_description": "Poradniki, pytania i artykuły o wychodzeniu z uzależnienia od pornografii, ze wsparciem Lyrio.",
-    "empty": "W tym języku nie ma jeszcze artykułów."
+    "empty": "W tym języku nie ma jeszcze artykułów.",
+    "not_found_title": "Nie znaleziono strony",
+    "not_found_text": "Ten adres nie istnieje lub artykuł został usunięty.",
+    "back_home": "Zobacz wszystkie artykuły"
   },
   "ro": {
     "blog_name": "Articole",
@@ -693,7 +777,10 @@
     "language": "Limbă",
     "home_title": "Articole Lyrio",
     "home_description": "Ghiduri, întrebări și articole pentru a ieși din dependența de pornografie, cu sprijinul Lyrio.",
-    "empty": "Încă nu există articole în această limbă."
+    "empty": "Încă nu există articole în această limbă.",
+    "not_found_title": "Pagina nu a fost găsită",
+    "not_found_text": "Această adresă nu există sau articolul a fost retras.",
+    "back_home": "Vezi toate articolele"
   },
   "sk": {
     "blog_name": "Články",
@@ -717,7 +804,10 @@
     "language": "Jazyk",
     "home_title": "Články Lyrio",
     "home_description": "Sprievodcovia, otázky a články, ako sa dostať zo závislosti od pornografie, s podporou Lyrio.",
-    "empty": "V tomto jazyku zatiaľ nie sú žiadne články."
+    "empty": "V tomto jazyku zatiaľ nie sú žiadne články.",
+    "not_found_title": "Stránka sa nenašla",
+    "not_found_text": "Táto adresa neexistuje alebo bol článok stiahnutý.",
+    "back_home": "Zobraziť všetky články"
   },
   "sl": {
     "blog_name": "Članki",
@@ -741,7 +831,10 @@
     "language": "Jezik",
     "home_title": "Članki Lyrio",
     "home_description": "Vodniki, vprašanja in članki za izhod iz zasvojenosti s pornografijo, s podporo Lyrio.",
-    "empty": "V tem jeziku še ni člankov."
+    "empty": "V tem jeziku še ni člankov.",
+    "not_found_title": "Strani ni mogoče najti",
+    "not_found_text": "Ta naslov ne obstaja ali pa je bil članek umaknjen.",
+    "back_home": "Oglejte si vse članke"
   },
   "sv": {
     "blog_name": "Artiklar",
@@ -765,7 +858,10 @@
     "language": "Språk",
     "home_title": "Lyrio-artiklar",
     "home_description": "Guider, frågor och artiklar för att ta dig ur porrberoende, med stöd från Lyrio.",
-    "empty": "Det finns inga artiklar på det här språket ännu."
+    "empty": "Det finns inga artiklar på det här språket ännu.",
+    "not_found_title": "Sidan hittades inte",
+    "not_found_text": "Adressen finns inte eller så har artikeln tagits bort.",
+    "back_home": "Se alla artiklar"
   },
   "pt-PT": {
     "blog_name": "Artigos",
@@ -789,7 +885,10 @@
     "language": "Idioma",
     "home_title": "Artigos do Lyrio",
     "home_description": "Guias, perguntas e artigos para sair do vício em pornografia, com o apoio do Lyrio.",
-    "empty": "Ainda não há artigos neste idioma."
+    "empty": "Ainda não há artigos neste idioma.",
+    "not_found_title": "Página não encontrada",
+    "not_found_text": "Este endereço não existe ou o artigo foi retirado.",
+    "back_home": "Ver todos os artigos"
   },
   "nb": {
     "blog_name": "Artikler",
@@ -813,7 +912,10 @@
     "language": "Språk",
     "home_title": "Lyrio-artikler",
     "home_description": "Guider, spørsmål og artikler for å komme ut av pornoavhengighet, med støtte fra Lyrio.",
-    "empty": "Det finnes ingen artikler på dette språket ennå."
+    "empty": "Det finnes ingen artikler på dette språket ennå.",
+    "not_found_title": "Fant ikke siden",
+    "not_found_text": "Denne adressen finnes ikke, eller artikkelen er fjernet.",
+    "back_home": "Se alle artikler"
   },
   "is": {
     "blog_name": "Greinar",
@@ -837,7 +939,10 @@
     "language": "Tungumál",
     "home_title": "Greinar Lyrio",
     "home_description": "Leiðarvísar, spurningar og greinar til að losna úr klámfíkn, með stuðningi Lyrio.",
-    "empty": "Engar greinar eru enn til á þessu tungumáli."
+    "empty": "Engar greinar eru enn til á þessu tungumáli.",
+    "not_found_title": "Síðan fannst ekki",
+    "not_found_text": "Þetta vistfang er ekki til eða greinin hefur verið tekin út.",
+    "back_home": "Sjá allar greinar"
   },
   "uk": {
     "blog_name": "Статті",
@@ -861,7 +966,10 @@
     "language": "Мова",
     "home_title": "Статті Lyrio",
     "home_description": "Посібники, питання та статті про те, як позбутися порнозалежності, за підтримки Lyrio.",
-    "empty": "Цією мовою статей поки немає."
+    "empty": "Цією мовою статей поки немає.",
+    "not_found_title": "Сторінку не знайдено",
+    "not_found_text": "Такої адреси немає, або статтю знято з публікації.",
+    "back_home": "Усі статті"
   },
   "sr": {
     "blog_name": "Чланци",
@@ -885,7 +993,10 @@
     "language": "Језик",
     "home_title": "Lyrio чланци",
     "home_description": "Водичи, питања и чланци за излазак из зависности од порнографије, уз подршку Lyrio.",
-    "empty": "На овом језику још нема чланака."
+    "empty": "На овом језику још нема чланака.",
+    "not_found_title": "Страница није пронађена",
+    "not_found_text": "Ова адреса не постоји или је чланак уклоњен.",
+    "back_home": "Погледај све чланке"
   },
   "mk": {
     "blog_name": "Статии",
@@ -909,7 +1020,10 @@
     "language": "Јазик",
     "home_title": "Статии на Lyrio",
     "home_description": "Водичи, прашања и статии за излез од зависноста од порнографија, со поддршка на Lyrio.",
-    "empty": "Сè уште нема статии на овој јазик."
+    "empty": "Сè уште нема статии на овој јазик.",
+    "not_found_title": "Страницата не е пронајдена",
+    "not_found_text": "Оваа адреса не постои или статијата е отстранета.",
+    "back_home": "Види ги сите статии"
   },
   "sq": {
     "blog_name": "Artikuj",
@@ -933,7 +1047,10 @@
     "language": "Gjuha",
     "home_title": "Artikujt e Lyrio",
     "home_description": "Udhëzues, pyetje dhe artikuj për të dalë nga varësia nga pornografia, me mbështetjen e Lyrio.",
-    "empty": "Ende nuk ka artikuj në këtë gjuhë."
+    "empty": "Ende nuk ka artikuj në këtë gjuhë.",
+    "not_found_title": "Faqja nuk u gjet",
+    "not_found_text": "Kjo adresë nuk ekziston ose artikulli është hequr.",
+    "back_home": "Shiko të gjithë artikujt"
   },
   "tr": {
     "blog_name": "Makaleler",
@@ -957,7 +1074,10 @@
     "language": "Dil",
     "home_title": "Lyrio Makaleleri",
     "home_description": "Pornografi bağımlılığından kurtulmak için rehberler, sorular ve makaleler, Lyrio desteğiyle.",
-    "empty": "Bu dilde henüz makale yok."
+    "empty": "Bu dilde henüz makale yok.",
+    "not_found_title": "Sayfa bulunamadı",
+    "not_found_text": "Bu adres mevcut değil veya makale kaldırıldı.",
+    "back_home": "Tüm makaleleri gör"
   },
   "ca": {
     "blog_name": "Articles",
@@ -981,6 +1101,9 @@
     "language": "Idioma",
     "home_title": "Articles de Lyrio",
     "home_description": "Guies, preguntes i articles per sortir de l'addicció a la pornografia, amb el suport de Lyrio.",
-    "empty": "Encara no hi ha articles en aquesta llengua."
+    "empty": "Encara no hi ha articles en aquesta llengua.",
+    "not_found_title": "No s'ha trobat la pàgina",
+    "not_found_text": "Aquesta adreça no existeix o l'article s'ha retirat.",
+    "back_home": "Veure tots els articles"
   }
 }

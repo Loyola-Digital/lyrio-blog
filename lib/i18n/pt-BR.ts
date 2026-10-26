@@ -21,6 +21,9 @@ export const ptBR = {
   home_title: 'Artigos do Lyrio',
   home_description: 'Guias, perguntas e artigos para sair do vício em pornografia, com o apoio do Lyrio.',
   empty: 'Ainda não há artigos neste idioma.',
+  not_found_title: 'Página não encontrada',
+  not_found_text: 'Este endereço não existe ou o artigo saiu do ar.',
+  back_home: 'Ver todos os artigos',
 }
 
 export type UiStrings = typeof ptBR
