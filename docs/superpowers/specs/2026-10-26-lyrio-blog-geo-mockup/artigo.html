@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como usar o botão Socorro numa crise de madrugada · Lyrio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f2eb; --ink:#16191f; --soft:#5b5f68; --line:#dcd8cc;
+    --navy:#1b2847; --navy-2:#24345a; --gold:#b89346; --gold-soft:#e9dcc0;
+    --serif:"Newsreader", Georgia, serif; --sans:"Montserrat", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+
+  /* header */
+  header{border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;letter-spacing:.02em;color:var(--navy);text-decoration:none}
+  .brand img{width:26px;height:26px}
+  .brand small{font-weight:500;color:var(--soft);letter-spacing:.04em;margin-left:4px}
+  nav{display:flex;gap:28px;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--soft)}
+  nav a{text-decoration:none}
+  nav a.on{color:var(--ink)}
+  .hright{display:flex;align-items:center;gap:22px;font-family:var(--sans);font-size:13px;font-weight:600}
+  .lang{color:var(--soft);font-weight:500}
+  .get{color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end;padding:72px 0 56px}
+  .kicker{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .kicker span{color:var(--soft);font-weight:500;letter-spacing:.1em}
+  h1{font-weight:500;font-size:clamp(38px,5.2vw,60px);line-height:1.04;letter-spacing:-.015em;margin:18px 0 20px;color:var(--ink)}
+  .stand{font-style:italic;font-size:23px;line-height:1.4;color:var(--soft);margin:0 0 32px;max-width:30ch}
+  .by{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:12.5px;color:var(--soft)}
+  .by .mark{width:34px;height:34px;border-radius:50%;background:var(--navy);display:grid;place-items:center}
+  .by .mark img{width:18px}
+  .by b{color:var(--ink);font-weight:600;display:block;margin-bottom:2px}
+
+  .shot{position:relative;background:var(--navy);border-radius:4px;height:440px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding-top:44px}
+  .shot::before{content:"";position:absolute;inset:auto -20% -40% -20%;height:70%;background:radial-gradient(closest-side,rgba(184,147,70,.35),transparent)}
+  .shot img{position:relative;width:250px;border-radius:30px;box-shadow:0 30px 60px rgba(0,0,0,.45);border:6px solid #0e1528}
+  .cap{font-family:var(--sans);font-size:11.5px;color:var(--soft);margin-top:10px}
+
+  /* body */
+  article{border-top:1px solid var(--line);padding:56px 0 24px}
+  .col{max-width:660px;margin:0 auto}
+  .lede{font-size:23px;line-height:1.55;margin:0 0 44px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+  .lede .run{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-right:8px}
+  h2{font-family:var(--sans);font-weight:600;font-size:24px;line-height:1.3;letter-spacing:-.01em;margin:52px 0 16px;color:var(--navy)}
+  p{font-size:19.5px;line-height:1.7;margin:0 0 20px;color:#23262d}
+
+  ol.steps{list-style:none;padding:0;margin:8px 0 28px;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 22px 0;font-size:19.5px;line-height:1.65}
+  ol.steps li::before{content:counter(s);position:absolute;left:-64px;top:-6px;font-size:40px;font-weight:400;color:var(--gold);font-style:italic}
+  ol.steps b{font-family:var(--sans);font-size:15.5px;font-weight:600;display:block;margin-bottom:4px;color:var(--ink)}
+
+  blockquote{margin:56px -60px;padding:0;text-align:center}
+  blockquote img{width:22px;opacity:.9}
+  blockquote q{display:block;font-style:italic;font-size:31px;line-height:1.35;color:var(--navy);margin:14px 0 12px;quotes:"“" "”"}
+  blockquote cite{font-family:var(--sans);font-style:normal;font-size:12px;letter-spacing:.08em;color:var(--soft);text-transform:uppercase}
+
+  .side{display:grid;grid-template-columns:1fr 190px;gap:36px;align-items:start;margin:8px 0 12px}
+  .side figure{margin:0}
+  .side figure img{width:100%;border-radius:22px;border:5px solid #fff;box-shadow:0 14px 34px rgba(27,40,71,.18)}
+  .side figcaption{font-family:var(--sans);font-size:11.5px;color:var(--soft);margin-top:10px;line-height:1.5}
+
+  .faq{margin:60px 0 0;border-top:2px solid var(--ink)}
+  .faq h2{margin:22px 0 8px}
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-family:var(--sans);font-size:16px;font-weight:600;color:var(--ink)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-weight:400;font-size:22px;line-height:1;color:var(--gold)}
+  details[open] summary::after{content:"–"}
+  details p{margin:12px 0 0;font-size:18px}
+
+  /* app band */
+  .band{background:var(--navy);color:#fff;margin-top:80px}
+  .band .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;padding-top:44px;padding-bottom:44px}
+  .band img.m{width:46px}
+  .band h3{font-weight:500;font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+  .band p{color:#c8cedb;font-size:17px;margin:0}
+  .stores{display:flex;gap:12px}
+  .store{display:flex;align-items:center;gap:10px;background:#000;color:#fff;border:1px solid #3a3f4b;border-radius:10px;padding:9px 16px;font-family:var(--sans);text-decoration:none}
+  .store small{display:block;font-size:9.5px;font-weight:500;opacity:.8}
+  .store span{font-size:15px;font-weight:600;line-height:1.1}
+  .store svg{width:20px;height:20px;fill:#fff}
+
+  /* related */
+  .rel{padding:64px 0 40px}
+  .rel .head{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:28px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .grid3 a{text-decoration:none}
+  .grid3 h4{font-weight:500;font-size:23px;line-height:1.25;margin:10px 0 8px}
+  .grid3 p{font-size:16px;color:var(--soft);line-height:1.5;margin:0}
+
+  footer{border-top:1px solid var(--line);font-family:var(--sans);font-size:12px;color:var(--soft)}
+  footer .wrap{display:flex;justify-content:space-between;padding-top:24px;padding-bottom:40px}
+
+  @media (max-width:860px){
+    .wrap{padding:0 20px}
+    nav{display:none}
+    .hero{grid-template-columns:1fr;gap:36px;padding-top:44px}
+    .shot{height:360px}
+    ol.steps li{padding-left:44px} ol.steps li::before{left:0}
+    blockquote{margin:44px 0} blockquote q{font-size:25px}
+    .side{grid-template-columns:1fr} .side figure{max-width:200px}
+    .band .wrap{grid-template-columns:1fr;gap:20px}
+    .grid3{grid-template-columns:1fr;gap:28px}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="brand" href="#"><img src="logo.webp" alt="">Lyrio <small>Artigos</small></a>
+  <nav><a class="on" href="#">Guias</a><a href="#">Perguntas</a><a href="#">Recaída</a><a href="#">Fé e propósito</a></nav>
+  <div class="hright"><span class="lang">PT ▾</span><a class="get" href="#">Baixar o app</a></div>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="kicker">Guia prático <span>· 6 min de leitura</span></div>
+      <h1>Como usar o botão Socorro numa crise de madrugada</h1>
+      <p class="stand">O que fazer nos dez minutos em que a tentação parece maior do que você.</p>
+      <div class="by">
+        <div class="mark"><img src="logo.webp" alt=""></div>
+        <div><b>Equipe Lyrio</b>Atualizado em 26 de outubro de 2026</div>
+      </div>
+    </div>
+    <div>
+      <div class="shot"><img src="emergencia.jpg" alt="Tela de Emergência do Lyrio com o botão Socorro"></div>
+      <div class="cap">A aba Emergência, a um toque de qualquer tela do app.</div>
+    </div>
+  </section>
+</div>
+
+<article><div class="col">
+
+  <p class="lede"><span class="run">Em resumo</span>Abra o Lyrio, vá em Emergência e toque em Socorro. O app interrompe o impulso com uma respiração guiada, dicas rápidas e uma palavra de encorajamento. Se a vontade não passar, a Opção Nuclear bloqueia o celular inteiro por uma a oito horas — sem volta.</p>
+
+  <h2>Por que a madrugada é o momento mais difícil?</h2>
+  <p>Cansaço, silêncio e o celular na mão formam a combinação perfeita. A parte do cérebro que segura os impulsos é justamente a que mais sente o sono, e o hábito aproveita esse intervalo para agir no piloto automático.</p>
+  <p>Saber disso já muda alguma coisa: a vontade das três da manhã não diz quem você é. Ela diz que você está cansado.</p>
+
+  <h2>O passo a passo, quando a vontade bater</h2>
+  <ol class="steps">
+    <li><b>Saia do lugar.</b>Levante da cama, acenda a luz, vá até a cozinha. Mudar de ambiente quebra o roteiro que o hábito já conhece.</li>
+    <li><b>Abra a aba Emergência e toque em Socorro.</b>Você não precisa decidir nada agora — só seguir o que aparece na tela pelos próximos minutos.</li>
+    <li><b>Escreva uma frase no Diário.</b>O que você está sentindo, em uma linha. Tirar o pensamento da cabeça é o que tira o impulso do piloto automático.</li>
+  </ol>
+
+  <blockquote>
+    <img src="logo.webp" alt="">
+    <q>Cada recaída pode ser o ponto de virada se você se levantar com mais determinação do que caiu.</q>
+    <cite>Da tela de Emergência do Lyrio</cite>
+  </blockquote>
+
+  <h2>E se mesmo assim não passar?</h2>
+  <div class="side">
+    <div>
+      <p>Para as noites em que nada funciona, existe a Opção Nuclear. Ela bloqueia todos os apps e deixa o celular inutilizável pelo tempo que você escolher, de uma a oito horas.</p>
+      <p>Não é castigo. É tirar a decisão das mãos do você cansado e entregá-la ao você que acorda amanhã.</p>
+    </div>
+    <figure>
+      <img src="nuclear.jpg" alt="Tela da Opção Nuclear do Lyrio">
+      <figcaption>A Opção Nuclear: 1h, 2h, 3h, 4h ou 8h de bloqueio total.</figcaption>
+    </figure>
+  </div>
+
+  <section class="faq">
+    <h2>Perguntas frequentes</h2>
+    <details open><summary>Alguém fica sabendo que eu usei o Socorro?</summary><p>Não. O que você faz na aba Emergência e escreve no Diário é privado e fica só com você.</p></details>
+    <details><summary>Dá para cancelar a Opção Nuclear depois de ativar?</summary><p>…</p></details>
+    <details><summary>E se eu já recaí hoje?</summary><p>…</p></details>
+    <details><summary>O Lyrio funciona no Android?</summary><p>…</p></details>
+  </section>
+
+</div></article>
+
+<section class="band"><div class="wrap">
+  <img class="m" src="logo.webp" alt="">
+  <div>
+    <h3>Você não está sozinho nessa luta.</h3>
+    <p>Bloqueio de apps, comunidade e um botão de socorro para as piores horas.</p>
+  </div>
+  <div class="stores">
+    <a class="store" href="#"><svg viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8 2.1-1.2 2.9-2.4c.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><div><small>Baixar na</small><span>App Store</span></div></a>
+    <a class="store" href="#"><svg viewBox="0 0 24 24"><path d="M3.6 1.8c-.3.3-.4.7-.4 1.2v18c0 .5.1.9.4 1.2L13.7 12 3.6 1.8zm11.1 11.2 2.6 2.6-11.4 6.5 8.8-9.1zm3.7-3.6 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-2.8-2.6 2.8-2.6zM5.9 1.9l11.4 6.5-2.6 2.6-8.8-9.1z"/></svg><div><small>Disponível no</small><span>Google Play</span></div></a>
+  </div>
+</div></section>
+
+<div class="wrap rel">
+  <div class="head">Leia também</div>
+  <div class="grid3">
+    <a href="#"><div class="kicker">Funções do app</div><h4>O que é a Opção Nuclear e quando usar</h4><p>O último recurso para as noites em que nada mais funciona.</p></a>
+    <a href="#"><div class="kicker">Perguntas</div><h4>O Lyrio é anônimo? Quem vê o que eu escrevo</h4><p>Privacidade, comunidade e o que fica só com você.</p></a>
+    <a href="#"><div class="kicker">Recaída</div><h4>Recaí. E agora? Os primeiros passos do recomeço</h4><p>Por que a sequência zerada não apaga o caminho que você fez.</p></a>
+  </div>
+</div>
+
+<footer><div class="wrap"><span>© 2026 Lyrio</span><span>Português · English · Español · +39 idiomas</span></div></footer>
+
+</body>
+</html>
