@@ -24,6 +24,7 @@ export const ptBR = {
   not_found_title: 'Página não encontrada',
   not_found_text: 'Este endereço não existe ou o artigo saiu do ar.',
   back_home: 'Ver todos os artigos',
+  skip: 'Pular para o conteúdo',
 }
 
 export type UiStrings = typeof ptBR

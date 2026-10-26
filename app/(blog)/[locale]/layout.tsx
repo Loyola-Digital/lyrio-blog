@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { jsonLdString, siteJsonLd } from '@/lib/jsonld'
+import { t } from '@/lib/i18n'
 import { dirFor, isLocale, LOCALES } from '@/lib/locales'
 import { SITE_URL } from '@/lib/site'
 import { Footer } from '../components'
@@ -25,6 +26,7 @@ export default async function BlogLayout(props: { children: React.ReactNode; par
   return (
     <html lang={locale} dir={dirFor(locale)} className={fontClassFor(locale)}>
       <body>
+        <a className="skip" href="#conteudo">{t(locale).skip}</a>
         {props.children}
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdString(siteJsonLd()) }} />

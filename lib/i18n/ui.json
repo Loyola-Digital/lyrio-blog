@@ -24,7 +24,8 @@
     "empty": "There are no articles in this language yet.",
     "not_found_title": "Page not found",
     "not_found_text": "This address does not exist or the article was taken down.",
-    "back_home": "See all articles"
+    "back_home": "See all articles",
+    "skip": "Skip to content"
   },
   "es": {
     "blog_name": "Artículos",
@@ -51,7 +52,8 @@
     "empty": "Todavía no hay artículos en este idioma.",
     "not_found_title": "Página no encontrada",
     "not_found_text": "Esta dirección no existe o el artículo ya no está disponible.",
-    "back_home": "Ver todos los artículos"
+    "back_home": "Ver todos los artículos",
+    "skip": "Saltar al contenido"
   },
   "zh-Hans": {
     "blog_name": "文章",
@@ -78,7 +80,8 @@
     "empty": "该语言暂无文章。",
     "not_found_title": "页面未找到",
     "not_found_text": "该地址不存在，或文章已下线。",
-    "back_home": "查看全部文章"
+    "back_home": "查看全部文章",
+    "skip": "跳到正文"
   },
   "zh-Hant": {
     "blog_name": "文章",
@@ -105,7 +108,8 @@
     "empty": "此語言尚無文章。",
     "not_found_title": "找不到頁面",
     "not_found_text": "此網址不存在，或文章已下架。",
-    "back_home": "查看所有文章"
+    "back_home": "查看所有文章",
+    "skip": "跳到正文"
   },
   "hi": {
     "blog_name": "लेख",
@@ -132,7 +136,8 @@
     "empty": "इस भाषा में अभी कोई लेख नहीं है।",
     "not_found_title": "पेज नहीं मिला",
     "not_found_text": "यह पता मौजूद नहीं है या लेख हटा दिया गया है।",
-    "back_home": "सभी लेख देखें"
+    "back_home": "सभी लेख देखें",
+    "skip": "सीधे सामग्री पर जाएँ"
   },
   "ar": {
     "blog_name": "مقالات",
@@ -159,7 +164,8 @@
     "empty": "لا توجد مقالات بهذه اللغة بعد.",
     "not_found_title": "الصفحة غير موجودة",
     "not_found_text": "هذا العنوان غير موجود أو تمت إزالة المقال.",
-    "back_home": "عرض كل المقالات"
+    "back_home": "عرض كل المقالات",
+    "skip": "انتقل إلى المحتوى"
   },
   "fr": {
     "blog_name": "Articles",
@@ -186,7 +192,8 @@
     "empty": "Aucun article dans cette langue pour le moment.",
     "not_found_title": "Page introuvable",
     "not_found_text": "Cette adresse n'existe pas ou l'article a été retiré.",
-    "back_home": "Voir tous les articles"
+    "back_home": "Voir tous les articles",
+    "skip": "Aller au contenu"
   },
   "bn": {
     "blog_name": "নিবন্ধ",
@@ -213,7 +220,8 @@
     "empty": "এই ভাষায় এখনও কোনো নিবন্ধ নেই।",
     "not_found_title": "পেজটি পাওয়া যায়নি",
     "not_found_text": "এই ঠিকানাটি নেই অথবা নিবন্ধটি সরিয়ে নেওয়া হয়েছে।",
-    "back_home": "সব নিবন্ধ দেখুন"
+    "back_home": "সব নিবন্ধ দেখুন",
+    "skip": "মূল বিষয়বস্তুতে যান"
   },
   "ru": {
     "blog_name": "Статьи",
@@ -240,7 +248,8 @@
     "empty": "На этом языке пока нет статей.",
     "not_found_title": "Страница не найдена",
     "not_found_text": "Такого адреса нет, или статья была снята с публикации.",
-    "back_home": "Все статьи"
+    "back_home": "Все статьи",
+    "skip": "Перейти к содержанию"
   },
   "id": {
     "blog_name": "Artikel",
@@ -267,7 +276,8 @@
     "empty": "Belum ada artikel dalam bahasa ini.",
     "not_found_title": "Halaman tidak ditemukan",
     "not_found_text": "Alamat ini tidak ada atau artikelnya sudah diturunkan.",
-    "back_home": "Lihat semua artikel"
+    "back_home": "Lihat semua artikel",
+    "skip": "Langsung ke konten"
   },
   "ur": {
     "blog_name": "مضامین",
@@ -294,7 +304,8 @@
     "empty": "اس زبان میں ابھی کوئی مضمون نہیں۔",
     "not_found_title": "صفحہ نہیں ملا",
     "not_found_text": "یہ پتہ موجود نہیں یا مضمون ہٹا دیا گیا ہے۔",
-    "back_home": "تمام مضامین دیکھیں"
+    "back_home": "تمام مضامین دیکھیں",
+    "skip": "مواد پر جائیں"
   },
   "de": {
     "blog_name": "Artikel",
@@ -321,7 +332,8 @@
     "empty": "In dieser Sprache gibt es noch keine Artikel.",
     "not_found_title": "Seite nicht gefunden",
     "not_found_text": "Diese Adresse existiert nicht oder der Artikel wurde entfernt.",
-    "back_home": "Alle Artikel ansehen"
+    "back_home": "Alle Artikel ansehen",
+    "skip": "Zum Inhalt springen"
   },
   "ja": {
     "blog_name": "記事",
@@ -348,7 +360,8 @@
     "empty": "この言語の記事はまだありません。",
     "not_found_title": "ページが見つかりません",
     "not_found_text": "このアドレスは存在しないか、記事が削除されました。",
-    "back_home": "すべての記事を見る"
+    "back_home": "すべての記事を見る",
+    "skip": "本文へスキップ"
   },
   "mr": {
     "blog_name": "लेख",
@@ -375,7 +388,8 @@
     "empty": "या भाषेत अद्याप कोणतेही लेख नाहीत.",
     "not_found_title": "पान सापडले नाही",
     "not_found_text": "हा पत्ता अस्तित्वात नाही किंवा लेख काढून टाकला आहे.",
-    "back_home": "सर्व लेख पहा"
+    "back_home": "सर्व लेख पहा",
+    "skip": "मुख्य मजकुराकडे जा"
   },
   "te": {
     "blog_name": "వ్యాసాలు",
@@ -402,7 +416,8 @@
     "empty": "ఈ భాషలో ఇంకా వ్యాసాలు లేవు.",
     "not_found_title": "పేజీ కనబడలేదు",
     "not_found_text": "ఈ చిరునామా లేదు లేదా వ్యాసం తొలగించబడింది.",
-    "back_home": "అన్ని వ్యాసాలు చూడండి"
+    "back_home": "అన్ని వ్యాసాలు చూడండి",
+    "skip": "విషయానికి వెళ్ళండి"
   },
   "bg": {
     "blog_name": "Статии",
@@ -429,7 +444,8 @@
     "empty": "Все още няма статии на този език.",
     "not_found_title": "Страницата не е намерена",
     "not_found_text": "Този адрес не съществува или статията е премахната.",
-    "back_home": "Всички статии"
+    "back_home": "Всички статии",
+    "skip": "Към съдържанието"
   },
   "hr": {
     "blog_name": "Članci",
@@ -456,7 +472,8 @@
     "empty": "Još nema članaka na ovom jeziku.",
     "not_found_title": "Stranica nije pronađena",
     "not_found_text": "Ova adresa ne postoji ili je članak uklonjen.",
-    "back_home": "Pogledaj sve članke"
+    "back_home": "Pogledaj sve članke",
+    "skip": "Preskoči na sadržaj"
   },
   "cs": {
     "blog_name": "Články",
@@ -483,7 +500,8 @@
     "empty": "V tomto jazyce zatím nejsou žádné články.",
     "not_found_title": "Stránka nenalezena",
     "not_found_text": "Tato adresa neexistuje nebo byl článek stažen.",
-    "back_home": "Zobrazit všechny články"
+    "back_home": "Zobrazit všechny články",
+    "skip": "Přejít na obsah"
   },
   "da": {
     "blog_name": "Artikler",
@@ -510,7 +528,8 @@
     "empty": "Der er endnu ingen artikler på dette sprog.",
     "not_found_title": "Siden blev ikke fundet",
     "not_found_text": "Denne adresse findes ikke, eller artiklen er fjernet.",
-    "back_home": "Se alle artikler"
+    "back_home": "Se alle artikler",
+    "skip": "Gå til indhold"
   },
   "nl": {
     "blog_name": "Artikelen",
@@ -537,7 +556,8 @@
     "empty": "Er zijn nog geen artikelen in deze taal.",
     "not_found_title": "Pagina niet gevonden",
     "not_found_text": "Dit adres bestaat niet of het artikel is offline gehaald.",
-    "back_home": "Alle artikelen bekijken"
+    "back_home": "Alle artikelen bekijken",
+    "skip": "Naar de inhoud"
   },
   "et": {
     "blog_name": "Artiklid",
@@ -564,7 +584,8 @@
     "empty": "Selles keeles artikleid veel pole.",
     "not_found_title": "Lehte ei leitud",
     "not_found_text": "Seda aadressi ei ole olemas või artikkel on eemaldatud.",
-    "back_home": "Vaata kõiki artikleid"
+    "back_home": "Vaata kõiki artikleid",
+    "skip": "Liigu sisu juurde"
   },
   "fi": {
     "blog_name": "Artikkelit",
@@ -591,7 +612,8 @@
     "empty": "Tällä kielellä ei ole vielä artikkeleita.",
     "not_found_title": "Sivua ei löytynyt",
     "not_found_text": "Tätä osoitetta ei ole tai artikkeli on poistettu.",
-    "back_home": "Näytä kaikki artikkelit"
+    "back_home": "Näytä kaikki artikkelit",
+    "skip": "Siirry sisältöön"
   },
   "el": {
     "blog_name": "Άρθρα",
@@ -618,7 +640,8 @@
     "empty": "Δεν υπάρχουν ακόμη άρθρα σε αυτή τη γλώσσα.",
     "not_found_title": "Η σελίδα δεν βρέθηκε",
     "not_found_text": "Αυτή η διεύθυνση δεν υπάρχει ή το άρθρο αφαιρέθηκε.",
-    "back_home": "Δείτε όλα τα άρθρα"
+    "back_home": "Δείτε όλα τα άρθρα",
+    "skip": "Μετάβαση στο περιεχόμενο"
   },
   "hu": {
     "blog_name": "Cikkek",
@@ -645,7 +668,8 @@
     "empty": "Ezen a nyelven még nincsenek cikkek.",
     "not_found_title": "Az oldal nem található",
     "not_found_text": "Ez a cím nem létezik, vagy a cikket eltávolították.",
-    "back_home": "Az összes cikk"
+    "back_home": "Az összes cikk",
+    "skip": "Ugrás a tartalomra"
   },
   "it": {
     "blog_name": "Articoli",
@@ -672,7 +696,8 @@
     "empty": "Non ci sono ancora articoli in questa lingua.",
     "not_found_title": "Pagina non trovata",
     "not_found_text": "Questo indirizzo non esiste o l'articolo è stato rimosso.",
-    "back_home": "Vedi tutti gli articoli"
+    "back_home": "Vedi tutti gli articoli",
+    "skip": "Vai al contenuto"
   },
   "lv": {
     "blog_name": "Raksti",
@@ -699,7 +724,8 @@
     "empty": "Šajā valodā vēl nav rakstu.",
     "not_found_title": "Lapa nav atrasta",
     "not_found_text": "Šī adrese neeksistē vai raksts ir noņemts.",
-    "back_home": "Skatīt visus rakstus"
+    "back_home": "Skatīt visus rakstus",
+    "skip": "Pāriet uz saturu"
   },
   "lt": {
     "blog_name": "Straipsniai",
@@ -726,7 +752,8 @@
     "empty": "Šia kalba straipsnių dar nėra.",
     "not_found_title": "Puslapis nerastas",
     "not_found_text": "Šio adreso nėra arba straipsnis pašalintas.",
-    "back_home": "Visi straipsniai"
+    "back_home": "Visi straipsniai",
+    "skip": "Pereiti prie turinio"
   },
   "pl": {
     "blog_name": "Artykuły",
@@ -753,7 +780,8 @@
     "empty": "W tym języku nie ma jeszcze artykułów.",
     "not_found_title": "Nie znaleziono strony",
     "not_found_text": "Ten adres nie istnieje lub artykuł został usunięty.",
-    "back_home": "Zobacz wszystkie artykuły"
+    "back_home": "Zobacz wszystkie artykuły",
+    "skip": "Przejdź do treści"
   },
   "ro": {
     "blog_name": "Articole",
@@ -780,7 +808,8 @@
     "empty": "Încă nu există articole în această limbă.",
     "not_found_title": "Pagina nu a fost găsită",
     "not_found_text": "Această adresă nu există sau articolul a fost retras.",
-    "back_home": "Vezi toate articolele"
+    "back_home": "Vezi toate articolele",
+    "skip": "Salt la conținut"
   },
   "sk": {
     "blog_name": "Články",
@@ -807,7 +836,8 @@
     "empty": "V tomto jazyku zatiaľ nie sú žiadne články.",
     "not_found_title": "Stránka sa nenašla",
     "not_found_text": "Táto adresa neexistuje alebo bol článok stiahnutý.",
-    "back_home": "Zobraziť všetky články"
+    "back_home": "Zobraziť všetky články",
+    "skip": "Prejsť na obsah"
   },
   "sl": {
     "blog_name": "Članki",
@@ -834,7 +864,8 @@
     "empty": "V tem jeziku še ni člankov.",
     "not_found_title": "Strani ni mogoče najti",
     "not_found_text": "Ta naslov ne obstaja ali pa je bil članek umaknjen.",
-    "back_home": "Oglejte si vse članke"
+    "back_home": "Oglejte si vse članke",
+    "skip": "Skoči na vsebino"
   },
   "sv": {
     "blog_name": "Artiklar",
@@ -861,7 +892,8 @@
     "empty": "Det finns inga artiklar på det här språket ännu.",
     "not_found_title": "Sidan hittades inte",
     "not_found_text": "Adressen finns inte eller så har artikeln tagits bort.",
-    "back_home": "Se alla artiklar"
+    "back_home": "Se alla artiklar",
+    "skip": "Hoppa till innehållet"
   },
   "pt-PT": {
     "blog_name": "Artigos",
@@ -888,7 +920,8 @@
     "empty": "Ainda não há artigos neste idioma.",
     "not_found_title": "Página não encontrada",
     "not_found_text": "Este endereço não existe ou o artigo foi retirado.",
-    "back_home": "Ver todos os artigos"
+    "back_home": "Ver todos os artigos",
+    "skip": "Saltar para o conteúdo"
   },
   "nb": {
     "blog_name": "Artikler",
@@ -915,7 +948,8 @@
     "empty": "Det finnes ingen artikler på dette språket ennå.",
     "not_found_title": "Fant ikke siden",
     "not_found_text": "Denne adressen finnes ikke, eller artikkelen er fjernet.",
-    "back_home": "Se alle artikler"
+    "back_home": "Se alle artikler",
+    "skip": "Gå til innholdet"
   },
   "is": {
     "blog_name": "Greinar",
@@ -942,7 +976,8 @@
     "empty": "Engar greinar eru enn til á þessu tungumáli.",
     "not_found_title": "Síðan fannst ekki",
     "not_found_text": "Þetta vistfang er ekki til eða greinin hefur verið tekin út.",
-    "back_home": "Sjá allar greinar"
+    "back_home": "Sjá allar greinar",
+    "skip": "Fara í efni"
   },
   "uk": {
     "blog_name": "Статті",
@@ -969,7 +1004,8 @@
     "empty": "Цією мовою статей поки немає.",
     "not_found_title": "Сторінку не знайдено",
     "not_found_text": "Такої адреси немає, або статтю знято з публікації.",
-    "back_home": "Усі статті"
+    "back_home": "Усі статті",
+    "skip": "Перейти до вмісту"
   },
   "sr": {
     "blog_name": "Чланци",
@@ -996,7 +1032,8 @@
     "empty": "На овом језику још нема чланака.",
     "not_found_title": "Страница није пронађена",
     "not_found_text": "Ова адреса не постоји или је чланак уклоњен.",
-    "back_home": "Погледај све чланке"
+    "back_home": "Погледај све чланке",
+    "skip": "Пређи на садржај"
   },
   "mk": {
     "blog_name": "Статии",
@@ -1023,7 +1060,8 @@
     "empty": "Сè уште нема статии на овој јазик.",
     "not_found_title": "Страницата не е пронајдена",
     "not_found_text": "Оваа адреса не постои или статијата е отстранета.",
-    "back_home": "Види ги сите статии"
+    "back_home": "Види ги сите статии",
+    "skip": "Прејди на содржината"
   },
   "sq": {
     "blog_name": "Artikuj",
@@ -1050,7 +1088,8 @@
     "empty": "Ende nuk ka artikuj në këtë gjuhë.",
     "not_found_title": "Faqja nuk u gjet",
     "not_found_text": "Kjo adresë nuk ekziston ose artikulli është hequr.",
-    "back_home": "Shiko të gjithë artikujt"
+    "back_home": "Shiko të gjithë artikujt",
+    "skip": "Kalo te përmbajtja"
   },
   "tr": {
     "blog_name": "Makaleler",
@@ -1077,7 +1116,8 @@
     "empty": "Bu dilde henüz makale yok.",
     "not_found_title": "Sayfa bulunamadı",
     "not_found_text": "Bu adres mevcut değil veya makale kaldırıldı.",
-    "back_home": "Tüm makaleleri gör"
+    "back_home": "Tüm makaleleri gör",
+    "skip": "İçeriğe geç"
   },
   "ca": {
     "blog_name": "Articles",
@@ -1104,6 +1144,7 @@
     "empty": "Encara no hi ha articles en aquesta llengua.",
     "not_found_title": "No s'ha trobat la pàgina",
     "not_found_text": "Aquesta adreça no existeix o l'article s'ha retirat.",
-    "back_home": "Veure tots els articles"
+    "back_home": "Veure tots els articles",
+    "skip": "Salta al contingut"
   }
 }

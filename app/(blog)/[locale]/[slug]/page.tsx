@@ -84,7 +84,7 @@ export default async function ArticlePage(props: Props) {
         </section>
       </div>
 
-      <article className="article">
+      <article className="article" id="conteudo">
         <div className="col">
           {v.summary && <p className="lede"><span className="run">{s.in_short}</span>{v.summary}</p>}
           <div className="prose" dangerouslySetInnerHTML={{ __html: renderMarkdown(v.bodyMd) }} />

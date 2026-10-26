@@ -13,10 +13,15 @@ Uma melhoria por rodada, a de maior valor primeiro. Cada uma entra com teste, li
    - endereços fora de qualquer rota caem num 404 próprio (`app/global-not-found.tsx`);
    - limite: um idioma inválido (`/xx`) ainda mostra o 404 padrão do Next, com status 404. Fechar isso via `dynamicParams` quebraria os artigos gerados sob demanda.
 
-## Próximas (por valor)
+4. **CI no GitHub Actions** (`.github/workflows/ci.yml`): a cada push rodam os testes (inclusive contra um Postgres de verdade), o lint, os tipos e o build. **Parado por cobrança:** o GitHub não iniciou o job porque o pagamento da organização Loyola-Digital falhou ou o limite de gastos do Actions precisa subir (Settings → Billing & plans). Resolvido isso, roda sozinho.
 
-4. CI no GitHub Actions: testes (inclusive contra Postgres de verdade), lint e tipos a cada push.
-5. JSON-LD da página inicial (lista dos artigos) para as IAs entenderem o índice.
-6. Breadcrumb visível no artigo (Artigos › tipo).
-7. Acessibilidade do blog: "pular para o conteúdo" e foco visível.
-8. Tela de erro do admin, em vez da página genérica do Next.
+5. **JSON-LD da página inicial** (`homeJsonLd`): cada idioma descreve a home como `CollectionPage` com a `ItemList` dos artigos, um índice que as IAs leem direto.
+
+6. **Acessibilidade do blog**: link "pular para o conteúdo" (traduzido nos 42 idiomas) e foco visível dourado para quem navega pelo teclado.
+
+7. **Tela de erro do admin** (`admin/error.tsx`): se o banco ou a rede falharem, aparece "Algo deu errado" com o código do erro e um botão "Tentar de novo" que recarrega os dados. Testado desligando o banco local e religando.
+
+## Descartadas
+
+- Trilha "Artigos › tipo" visível no artigo: o JSON-LD já tem o breadcrumb e o tipo já aparece acima do título. Não vale o custo.
+- Limite de tentativas de login: em servidor sem estado (Vercel) só funcionaria com um banco ou Redis extra. Com senha forte e o atraso de 800 ms, não compensa por enquanto.

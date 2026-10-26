@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <>
       <Header locale={locale} s={s} languages={LOCALES.map((l) => ({ locale: l, href: `/${l}` }))} />
-      <main className="wrap notfound">
+      <main className="wrap notfound" id="conteudo">
         <div className="kicker">404</div>
         <h1>{s.not_found_title}</h1>
         <p className="stand">{s.not_found_text}</p>

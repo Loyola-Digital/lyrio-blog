@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getSql } from '@/lib/db'
 import { t } from '@/lib/i18n'
+import { homeJsonLd, jsonLdString } from '@/lib/jsonld'
 import { isLocale, LOCALES, type Locale } from '@/lib/locales'
 import { listPublished } from '@/lib/posts'
 import { SITE_URL } from '@/lib/site'
@@ -40,7 +41,7 @@ export default async function Home(props: Props) {
   return (
     <>
       <Header locale={locale} s={s} languages={LOCALES.map((l: Locale) => ({ locale: l, href: `/${l}` }))} />
-      <main className="wrap home">
+      <main className="wrap home" id="conteudo">
         <section className="home-head">
           <h1>{s.home_title}</h1>
           <p className="stand">{s.home_description}</p>
@@ -66,6 +67,10 @@ export default async function Home(props: Props) {
         })}
       </main>
       <StoreBand s={s} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdString(homeJsonLd({
+        locale, url: `${SITE_URL}/${locale}`, name: s.home_title, description: s.home_description,
+        items: posts.map((p) => ({ name: p.title, url: `${SITE_URL}${articleHref(locale, p.slug)}` })),
+      })) }} />
     </>
   )
 }

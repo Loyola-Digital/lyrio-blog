@@ -51,6 +51,18 @@ export function articleJsonLd(a: { post: Post; version: Version; url: string; ho
   return out
 }
 
+// Página inicial de cada idioma: a lista de artigos como índice que as IAs conseguem ler.
+export function homeJsonLd(h: { locale: string; url: string; name: string; description: string; items: { name: string; url: string }[] }): object {
+  return {
+    '@context': CTX, '@type': 'CollectionPage', inLanguage: h.locale, url: h.url, name: h.name, description: h.description,
+    publisher: ORG,
+    mainEntity: {
+      '@type': 'ItemList', numberOfItems: h.items.length,
+      itemListElement: h.items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: it.url })),
+    },
+  }
+}
+
 export function jsonLdString(x: unknown): string {
   return JSON.stringify(x).replace(/</g, '\\u003c')
 }

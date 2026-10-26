@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { articleJsonLd, jsonLdString, siteJsonLd } from '@/lib/jsonld'
+import { articleJsonLd, homeJsonLd, jsonLdString, siteJsonLd } from '@/lib/jsonld'
 import { buildLlmsTxt } from '@/lib/llms'
 import { extractSteps, readingMinutes, renderMarkdown } from '@/lib/markdown'
 import { pathsFor } from '@/lib/revalidate'
@@ -83,6 +83,19 @@ describe('json-ld', () => {
     expect(site.find((x) => x['@type'] === 'MobileApplication')).toMatchObject({ name: 'Lyrio', operatingSystem: 'iOS, Android' })
     const blog = articleJsonLd({ post, version, url: U, homeUrl: H, homeName: 'Artigos' })
     expect(JSON.stringify([site, blog])).not.toContain('Blessed Byte')
+  })
+
+  it('descreve a página inicial como coleção com a lista de artigos', () => {
+    const home = homeJsonLd({
+      locale: 'de', url: 'https://blog.lyrioapp.com/de', name: 'Lyrio-Artikel', description: 'd',
+      items: [{ name: 'A', url: 'https://blog.lyrioapp.com/de/a' }, { name: 'B', url: 'https://blog.lyrioapp.com/de/b' }],
+    }) as any
+    expect(home).toMatchObject({
+      '@type': 'CollectionPage', inLanguage: 'de', url: 'https://blog.lyrioapp.com/de', name: 'Lyrio-Artikel',
+      publisher: { name: 'Lyrio' },
+      mainEntity: { '@type': 'ItemList', numberOfItems: 2 },
+    })
+    expect(home.mainEntity.itemListElement[1]).toEqual({ '@type': 'ListItem', position: 2, name: 'B', url: 'https://blog.lyrioapp.com/de/b' })
   })
 
   it('não deixa conteúdo fechar a tag script', () => {
