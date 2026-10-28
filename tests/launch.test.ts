@@ -37,6 +37,13 @@ describe('syncArticles', () => {
     expect(await syncArticles(sql, [a, b])).toEqual({ created: 0, updated: 0, removed: 0 })
   })
 
+  it('não acusa mudança no FAQ só porque o banco guarda as chaves em outra ordem', async () => {
+    const sql = await testSql()
+    const f = { ...a, source: { ...a.source, faq: [{ q: 'Pergunta longa?', a: 'Sim.' }] } }
+    await syncArticles(sql, [f])
+    expect(await syncArticles(sql, [f])).toEqual({ created: 0, updated: 0, removed: 0 })
+  })
+
   it('atualiza o artigo do mesmo tema (inclusive o slug) e apaga os temas removidos', async () => {
     const sql = await testSql()
     await syncArticles(sql, [a, b])

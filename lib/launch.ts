@@ -10,9 +10,11 @@ export async function pendingTopics<T extends LaunchTopic>(sql: Sql, topics: T[]
   return topics.filter((t) => !done.has(t.topic))
 }
 
+// o jsonb devolve as chaves de cada pergunta em outra ordem ({a, q}); compara só o conteúdo
+const faqKey = (v: VersionFields) => JSON.stringify(v.faq.map((f) => [f.q, f.a]))
 const same = (a: VersionFields, b: VersionFields) =>
   a.slug === b.slug && a.title === b.title && a.headline === b.headline && a.summary === b.summary &&
-  a.bodyMd === b.bodyMd && a.metaDescription === b.metaDescription && JSON.stringify(a.faq) === JSON.stringify(b.faq)
+  a.bodyMd === b.bodyMd && a.metaDescription === b.metaDescription && faqKey(a) === faqKey(b)
 
 // Deixa o blog igual à lista (pt-BR), casando pelo tema: apaga os removidos, atualiza o que mudou e cria o que falta.
 // Rodar de novo não muda nada. Artigo atualizado volta a pedir tradução.
