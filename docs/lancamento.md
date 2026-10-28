@@ -43,12 +43,11 @@ O blog roda na Vercel (`lyrio-blog.vercel.app`) e aparece em `lyrioapp.com/pt-BR
 - no `/robots.txt` do site principal ele acrescenta `Sitemap: https://lyrioapp.com/blog-sitemap.xml`;
 - `/llms.txt` sai do blog enquanto o site principal não tiver um.
 
-Para publicar o Worker (uma vez, logado na conta do Cloudflare onde está o `lyrioapp.com`):
+Para publicar o Worker (no ar desde 28/10/2026): a zona `lyrioapp.com` está na conta `fd23842860e663cf1168420e1a84883e`, e o token de API do Lyrio (`CLOUD_LYRIO`) tem acesso a ela.
 
 ```bash
 cd cloudflare
-npx wrangler login
-npx wrangler deploy
+CLOUDFLARE_API_TOKEN=<token CLOUD_LYRIO> CLOUDFLARE_ACCOUNT_ID=fd23842860e663cf1168420e1a84883e npx wrangler deploy
 ```
 
 Idioma novo no blog precisa de rota nova em `cloudflare/wrangler.toml`. O admin continua em `https://lyrio-blog.vercel.app/admin/`.
