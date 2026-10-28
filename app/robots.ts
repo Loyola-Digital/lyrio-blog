@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
   const rule = { allow: '/', disallow: ['/admin', '/api'] }
   return {
     rules: [{ userAgent: '*', ...rule }, { userAgent: AI_BOTS, ...rule }],
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${SITE_URL}/blog-sitemap.xml`, // o Worker serve o /sitemap.xml daqui nesse endereço
   }
 }

@@ -8,12 +8,14 @@ import { writeArticle } from '@/lib/ai/write'
 import { checkPassword, SESSION_COOKIE, SESSION_DAYS, signSession } from '@/lib/auth'
 import { getSql } from '@/lib/db'
 import { parseEditorForm } from '@/lib/editor-form'
-import { type Locale } from '@/lib/locales'
+import { type Locale, SOURCE_LOCALE } from '@/lib/locales'
 import {
-  allMissing, createPost, deletePost, getPostForEdit, listVersionsOf, missingLocales, publish, unpublish, updateSource,
+  allMissing, createPost, deletePost, getPostForEdit, listPublished, listVersionsOf, missingLocales, publish, unpublish,
+  updateSource,
 } from '@/lib/posts'
 import { pathsFor } from '@/lib/revalidate'
 import { getAbout, setAbout } from '@/lib/settings'
+import { blogHref } from '@/lib/site'
 import type { PostType } from '@/lib/types'
 import { requireAdmin } from './guard'
 
@@ -65,7 +67,8 @@ export async function generateDraft(_prev: DraftState, fd: FormData): Promise<Dr
   let id: string
   try {
     const type = keep.type as PostType
-    const source = await writeArticle({ topic: keep.topic, type }, about, keep.model)
+    const links = (await listPublished(sql, SOURCE_LOCALE)).map((p) => ({ title: p.title, href: blogHref(SOURCE_LOCALE, p.slug) }))
+    const source = await writeArticle({ topic: keep.topic, type }, about, keep.model, links)
     id = await createPost(sql, { type, topic: keep.topic, source })
   } catch (e) {
     if (e instanceof AiError) return { ...keep, error: e.message }

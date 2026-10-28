@@ -2,7 +2,7 @@ import type { Locale } from '@/lib/locales'
 
 // Uma tradução = uma chamada à API (cada uma cabe no tempo de uma função da Vercel).
 export async function requestTranslation(postId: string, locale: Locale, model: string): Promise<void> {
-  const res = await fetch('/api/translate', {
+  const res = await fetch('/api/translate/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ postId, locale, model }),

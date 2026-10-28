@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState } from 'react'
+import { asset } from '@/lib/site'
 import { login } from '../actions'
 
 export default function LoginPage() {
@@ -9,7 +10,7 @@ export default function LoginPage() {
     <main className="adm-login">
       <form action={action}>
         <p className="adm-brand">
-          <img src="/logo.webp" alt="" width={28} height={28} /> Lyrio <span>Artigos</span>
+          <img src={asset('/logo.webp')} alt="" width={28} height={28} /> Lyrio <span>Artigos</span>
         </p>
         <label htmlFor="password">Senha do time</label>
         <input id="password" name="password" type="password" autoComplete="current-password" required autoFocus />

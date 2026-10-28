@@ -117,7 +117,7 @@ describe('llms.txt', () => {
 describe('pathsFor', () => {
   it('lista as páginas a revalidar sem repetir', () => {
     expect(pathsFor([{ locale: 'ja', slug: '如何' }, { locale: 'ja', slug: 'x' }])).toEqual([
-      '/ja', `/ja/${encodeURIComponent('如何')}`, '/ja/x', '/sitemap.xml', '/llms.txt',
+      '/ja/blog/', `/ja/blog/${encodeURIComponent('如何')}/`, '/ja/blog/x/', '/sitemap.xml', '/llms.txt',
     ])
   })
 })

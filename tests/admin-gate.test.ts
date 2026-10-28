@@ -8,6 +8,7 @@ describe('gate', () => {
   it('deixa o blog e o login passarem', () => {
     expect(gate('/pt-BR/algum-artigo', undefined, 's')).toBe('next')
     expect(gate('/admin/login', undefined, 's')).toBe('next')
+    expect(gate('/admin/login/', undefined, 's')).toBe('next') // trailingSlash: true
   })
 
   it('manda para o login quem abre o admin sem sessão válida', () => {
@@ -15,12 +16,14 @@ describe('gate', () => {
     expect(gate('/admin/artigos/novo', 'lixo', 's')).toBe('login')
     expect(gate('/admin', ok, '')).toBe('login') // segredo não configurado não libera
     expect(gate('/admin/sobre', ok, 's')).toBe('next')
+    expect(gate('/admin/', undefined, 's')).toBe('login')
   })
 
   it('responde 401 nas APIs sem sessão', () => {
     expect(gate('/api/translate', undefined, 's')).toBe('unauthorized')
     expect(gate('/api/upload', 'lixo', 's')).toBe('unauthorized')
     expect(gate('/api/translate', ok, 's')).toBe('next')
+    expect(gate('/api/translate/', undefined, 's')).toBe('unauthorized')
   })
 
   it('não confunde caminhos parecidos', () => {

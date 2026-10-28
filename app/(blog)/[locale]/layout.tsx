@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { jsonLdString, siteJsonLd } from '@/lib/jsonld'
 import { t } from '@/lib/i18n'
 import { dirFor, isLocale } from '@/lib/locales'
-import { SITE_URL } from '@/lib/site'
+import { asset, SITE_URL } from '@/lib/site'
 import { Footer } from '../components'
 import { fontClassFor } from '../fonts'
 import '../blog.css'
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Lyrio', url: 'https://lyrioapp.com' }],
   creator: 'Lyrio',
   publisher: 'Lyrio',
+  icons: { icon: asset('/icon.png') }, // fora do app/: no lyrioapp.com só o prefixo do blog chega aqui
 }
 
 // Nada é gerado no build (o build não precisa do banco): cada página nasce na primeira visita e fica em cache.

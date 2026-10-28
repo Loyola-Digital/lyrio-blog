@@ -21,7 +21,7 @@ Uma melhoria por rodada, a de maior valor primeiro. Cada uma entra com teste, li
 
 7. **Tela de erro do admin** (`admin/error.tsx`): se o banco ou a rede falharem, aparece "Algo deu errado" com o código do erro e um botão "Tentar de novo" que recarrega os dados. Testado desligando o banco local e religando.
 
-8. **Artigos de lançamento publicados** (`content/artigos-lancamento.json`): os 20 temas da lista, escritos em português só com o que aparece nas telas do app, publicados com `scripts/publish-launch.ts` (pula o que já existe).
+8. **Artigos publicados** (`content/artigos.json`): os 20 de lançamento mais as 20 pautas da especialista em SEO/GEO, sincronizados com `scripts/sync-articles.ts` (cria, atualiza e apaga pelo tema; rodar de novo não muda nada).
 
 9. **Botão "Traduzir tudo"** no admin: traduz de uma vez tudo o que falta em todos os artigos publicados, com o modelo escolhido, barra de progresso e "Tentar as que faltam".
 

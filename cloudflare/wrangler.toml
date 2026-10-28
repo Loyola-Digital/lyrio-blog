@@ -1,0 +1,58 @@
+# Deploy: npx wrangler deploy (de dentro desta pasta, logado na conta do Cloudflare onde está o lyrioapp.com)
+name = "lyrio-blog-proxy"
+main = "blog-proxy.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+# Só estes caminhos passam pelo Worker; o resto do lyrioapp.com nem o toca. Idioma novo no blog = rota nova aqui.
+routes = [
+  { pattern = "lyrioapp.com/blog-static/*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/blog-sitemap.xml", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/robots.txt", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/llms.txt", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/pt-BR/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/en/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/es/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/zh-Hans/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/zh-Hant/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/hi/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ar/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/fr/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/bn/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ru/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/id/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ur/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/de/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ja/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/mr/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/te/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/bg/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/hr/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/cs/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/da/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/nl/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/et/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/fi/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/el/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/hu/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/it/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/lv/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/lt/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/pl/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ro/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/sk/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/sl/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/sv/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/pt-PT/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/nb/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/is/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/uk/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/sr/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/mk/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/sq/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/tr/blog*", zone_name = "lyrioapp.com" },
+  { pattern = "lyrioapp.com/ca/blog*", zone_name = "lyrioapp.com" },
+]
+
+[vars]
+BLOG_ORIGIN = "https://lyrio-blog.vercel.app"

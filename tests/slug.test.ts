@@ -3,7 +3,7 @@ import { normalizeSlugParam, slugify } from '@/lib/slug'
 
 describe('slugify', () => {
   it('tira acento de letra latina', () => {
-    expect(slugify('Como parar de ver pornografia?')).toBe('como-parar-de-ver-pornografia')
+    expect(slugify('Como parar de vez?')).toBe('como-parar-de-vez')
     expect(slugify('Ação & Reação: o Botão Socorro')).toBe('acao-reacao-o-botao-socorro')
     expect(slugify('  --Olá--  ')).toBe('ola')
   })
@@ -25,5 +25,15 @@ describe('normalizeSlugParam', () => {
   it('decodifica a URL e devolve o original se for inválida', () => {
     expect(normalizeSlugParam('%E5%A6%82%E4%BD%95')).toBe('如何')
     expect(normalizeSlugParam('%E0%A4')).toBe('%E0%A4')
+  })
+})
+
+describe('slug sem termos explícitos', () => {
+  // filtros de DNS de escolas e empresas bloqueiam URLs com esses trechos
+  it('tira palavras com "porn" e "xxx" do slug', () => {
+    expect(slugify('Como parar de ver pornografia')).toBe('como-parar-de-ver')
+    expect(slugify('Bloquear sites pornográficos no Chrome')).toBe('bloquear-sites-no-chrome')
+    expect(slugify('XXX Invaders')).toBe('invaders')
+    expect(slugify('Pornografia')).toBe('')
   })
 })

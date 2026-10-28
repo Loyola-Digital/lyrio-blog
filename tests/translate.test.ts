@@ -52,7 +52,7 @@ describe('translateOne', () => {
     const deps = fakeDeps()
     const out = await translateOne(sql, pubId, 'de', 'm/x', deps)
     expect(out.slug).toBe('de-slug')
-    expect(out.paths).toContain('/de')
+    expect(out.paths).toContain('/de/blog/')
     expect(await missingLocales(sql, pubId)).not.toContain('de')
     expect(deps.translate).toHaveBeenLastCalledWith(expect.objectContaining({ title: 'Como parar' }), 'de', 'm/x')
   })

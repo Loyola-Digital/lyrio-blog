@@ -98,6 +98,13 @@ describe('escrita e tradução', () => {
     expect(sys).toContain('Nunca prometa cura')
   })
 
+  it('pede links internos para os artigos publicados, estudos só com fonte e slug sem termos explícitos', () => {
+    const sys = writerSystem('S', [{ title: 'Recaí. E agora?', href: '/pt-BR/blog/recai-e-agora/' }])
+    expect(sys).toContain('- [Recaí. E agora?](/pt-BR/blog/recai-e-agora/)')
+    expect(sys).toContain('## Fontes')
+    expect(sys).toMatch(/sem "porn"/)
+  })
+
   it('monta o pedido de tradução com idioma, sem glossário', () => {
     const u = translatorUser(src(), 'de')
     expect(u).toContain('German')

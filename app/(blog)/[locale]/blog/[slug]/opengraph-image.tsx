@@ -12,7 +12,7 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 export const alt = 'Lyrio'
 
-const FOOTER = 'blog.lyrioapp.com'
+const FOOTER = 'lyrioapp.com/blog'
 
 export default async function Image(props: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await props.params
@@ -23,7 +23,7 @@ export default async function Image(props: { params: Promise<{ locale: string; s
   const family = isLocale(locale) && !rtl ? serifFamilyFor(locale) : 'Newsreader'
   const [font, logo] = await Promise.all([
     loadGoogleFont(family, `${title}Lyrio${FOOTER}`).catch(() => null),
-    readFile(join(process.cwd(), 'public/logo.png')),
+    readFile(join(process.cwd(), 'public/blog-static/logo.png')),
   ])
 
   return new ImageResponse(

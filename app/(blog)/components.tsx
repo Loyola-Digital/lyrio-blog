@@ -1,26 +1,24 @@
 import type { UiStrings } from '@/lib/i18n/pt-BR'
 import { NATIVE_NAME, type Locale } from '@/lib/locales'
-import { APP_STORE_URL, PLAY_STORE_URL } from '@/lib/site'
+import { APP_STORE_URL, asset, blogHref, PLAY_STORE_URL } from '@/lib/site'
 import type { PostType } from '@/lib/types'
 
 export const kickerFor = (s: UiStrings, type: PostType) =>
   ({ artigo: s.kicker_artigo, faq: s.kicker_faq, tutorial: s.kicker_tutorial })[type]
-
-export const articleHref = (locale: Locale, slug: string) => `/${locale}/${encodeURIComponent(slug)}`
 
 export function Header(props: { locale: Locale; s: UiStrings; languages: { locale: Locale; href: string }[] }) {
   const { locale, s } = props
   return (
     <header className="top">
       <div className="wrap">
-        <a className="brand" href={`/${locale}`}>
-          <img src="/logo.webp" alt="" width={26} height={26} />
+        <a className="brand" href={blogHref(locale)}>
+          <img src={asset('/logo.webp')} alt="" width={26} height={26} />
           Lyrio <small>{s.blog_name}</small>
         </a>
         <nav>
-          <a href={`/${locale}#guias`}>{s.nav_tutorial}</a>
-          <a href={`/${locale}#perguntas`}>{s.nav_faq}</a>
-          <a href={`/${locale}#artigos`}>{s.nav_artigo}</a>
+          <a href={`${blogHref(locale)}#guias`}>{s.nav_tutorial}</a>
+          <a href={`${blogHref(locale)}#perguntas`}>{s.nav_faq}</a>
+          <a href={`${blogHref(locale)}#artigos`}>{s.nav_artigo}</a>
         </nav>
         <div className="hright">
           <details className="lang">
@@ -46,7 +44,7 @@ export function StoreBand({ s }: { s: UiStrings }) {
   return (
     <section className="band" id="app">
       <div className="wrap">
-        <img className="m" src="/logo.webp" alt="" width={46} height={46} />
+        <img className="m" src={asset('/logo.webp')} alt="" width={46} height={46} />
         <div>
           <h3>{s.band_title}</h3>
           <p>{s.band_text}</p>

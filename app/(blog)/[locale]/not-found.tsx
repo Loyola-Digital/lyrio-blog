@@ -5,6 +5,7 @@
 import { useParams } from 'next/navigation'
 import { t } from '@/lib/i18n'
 import { isLocale, LOCALES, SOURCE_LOCALE } from '@/lib/locales'
+import { blogHref } from '@/lib/site'
 import { Header } from '../components'
 
 export default function NotFound() {
@@ -13,12 +14,12 @@ export default function NotFound() {
   const s = t(locale)
   return (
     <>
-      <Header locale={locale} s={s} languages={LOCALES.map((l) => ({ locale: l, href: `/${l}` }))} />
+      <Header locale={locale} s={s} languages={LOCALES.map((l) => ({ locale: l, href: blogHref(l) }))} />
       <main className="wrap notfound" id="conteudo">
         <div className="kicker">404</div>
         <h1>{s.not_found_title}</h1>
         <p className="stand">{s.not_found_text}</p>
-        <a className="get" href={`/${locale}`}>{s.back_home}</a>
+        <a className="get" href={blogHref(locale)}>{s.back_home}</a>
       </main>
     </>
   )

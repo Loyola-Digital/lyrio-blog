@@ -2,11 +2,11 @@ import type { MetadataRoute } from 'next'
 import { getSql } from '@/lib/db'
 import { LOCALES } from '@/lib/locales'
 import { listAllPublishedVersions } from '@/lib/posts'
-import { SITE_URL } from '@/lib/site'
+import { blogHref, SITE_URL } from '@/lib/site'
 
 export const dynamic = 'force-dynamic' // lê o banco a cada pedido (só robôs pedem); o build não depende do banco
 
-const url = (locale: string, slug?: string) => `${SITE_URL}/${locale}${slug ? `/${encodeURIComponent(slug)}` : ''}`
+const url = (locale: string, slug?: string) => `${SITE_URL}${blogHref(locale, slug)}`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const versions = await listAllPublishedVersions(getSql())

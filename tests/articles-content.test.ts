@@ -1,17 +1,26 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import type { LaunchTopic } from '@/lib/launch'
 import { extractSteps } from '@/lib/markdown'
 import { slugify } from '@/lib/slug'
 import type { PostType, VersionFields } from '@/lib/types'
 
 type Article = { topic: string; type: PostType; source: VersionFields }
-const articles: Article[] = JSON.parse(readFileSync('content/artigos-lancamento.json', 'utf8'))
-const topics: LaunchTopic[] = JSON.parse(readFileSync('scripts/launch-topics.json', 'utf8'))
+const articles: Article[] = JSON.parse(readFileSync('content/artigos.json', 'utf8'))
 
-describe('artigos de lançamento', () => {
-  it('cobrem os 20 temas da lista, com o tipo certo', () => {
-    expect(articles.map((a) => [a.topic, a.type])).toEqual(topics.map((t) => [t.topic, t.type]))
+describe('artigos do blog', () => {
+  it('têm um tema por artigo (é a chave do sync)', () => {
+    expect(new Set(articles.map((a) => a.topic)).size).toBe(articles.length)
+  })
+
+  it('só linkam artigos que existem, com a barra no fim', () => {
+    const slugs = new Set(articles.map((a) => a.source.slug))
+    for (const { source: s } of articles) {
+      for (const [, path] of s.bodyMd.matchAll(/\]\((\/[^)\s]*)\)/g)) {
+        expect(path, s.slug).toMatch(/^\/pt-BR\/blog\/([^/#]+\/)?(#.*)?$/)
+        const slug = path.split('/')[3]
+        if (slug) expect(slugs.has(slug), `${s.slug} → ${path}`).toBe(true)
+      }
+    }
   })
 
   it('têm todos os campos no formato que o blog espera', () => {
@@ -38,6 +47,6 @@ describe('artigos de lançamento', () => {
 
   it('não prometem resultado nem citam o que não está confirmado', () => {
     const all = JSON.stringify(articles)
-    expect(all).not.toMatch(/garant|100%|cura definitiva|Usuário Desktop/i)
+    expect(all).not.toMatch(/\bgarant(e|imos|ido)\b|100%|cura definitiva|Usuário Desktop/i) // "não há garantia" pode
   })
 })

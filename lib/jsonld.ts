@@ -1,9 +1,9 @@
 import { extractSteps } from './markdown'
-import { APP_STORE_URL, MAIN_SITE, PLAY_STORE_URL, SITE_URL } from './site'
+import { APP_STORE_URL, asset, MAIN_SITE, PLAY_STORE_URL, SITE_URL } from './site'
 import type { Post, Version } from './types'
 
 const CTX = 'https://schema.org'
-const LOGO = { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` }
+const LOGO = { '@type': 'ImageObject', url: `${SITE_URL}${asset('/logo.png')}` }
 const ORG = { '@type': 'Organization', name: 'Lyrio', url: MAIN_SITE, logo: LOGO }
 
 export function siteJsonLd(): object[] {

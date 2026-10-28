@@ -5,6 +5,7 @@ import { useRef, useState } from 'react'
 import type { ModelOption } from '@/lib/ai/openrouter'
 import type { Locale } from '@/lib/locales'
 import { renderMarkdown } from '@/lib/markdown'
+import { blogHref } from '@/lib/site'
 import { wrapSelection } from '@/lib/md-insert'
 import type { FaqItem, Post, Version } from '@/lib/types'
 import { deletePostAction, saveEditor, unpublishPost } from '../../actions'
@@ -47,7 +48,7 @@ export function Editor(props: {
     setUploading(true)
     setUploadError('')
     try {
-      const blob = await upload(`artigos/${file.name}`, file, { access: 'public', handleUploadUrl: '/api/upload' })
+      const blob = await upload(`artigos/${file.name}`, file, { access: 'public', handleUploadUrl: '/api/upload/' })
       return blob.url
     } catch (e) {
       setUploadError(`Não deu para subir a imagem: ${(e as Error).message}`)
@@ -124,7 +125,7 @@ export function Editor(props: {
 
         <label htmlFor="slug">Endereço (slug)</label>
         <input id="slug" name="slug" defaultValue={source?.slug} placeholder="gerado a partir do título" />
-        <p className="hint">blog.lyrioapp.com/pt-BR/<b>{source?.slug || '…'}</b>. Evite mudar depois de publicado.</p>
+        <p className="hint">lyrioapp.com/pt-BR/blog/<b>{source?.slug || '…'}</b>/. Evite mudar depois de publicado.</p>
 
         <label htmlFor="metaDescription">Meta description</label>
         <input id="metaDescription" name="metaDescription" defaultValue={source?.metaDescription} maxLength={200} />
@@ -142,7 +143,7 @@ export function Editor(props: {
                 {pending ? 'Salvando…' : 'Salvar e republicar'}
               </button>
               <p className="hint">Republicar refaz as traduções.</p>
-              <p><a href={`/pt-BR/${encodeURIComponent(source!.slug)}`} target="_blank" rel="noreferrer">Ver no blog ↗</a></p>
+              <p><a href={blogHref('pt-BR', source!.slug)} target="_blank" rel="noreferrer">Ver no blog ↗</a></p>
             </>
           ) : (
             <div className="ed-actions">

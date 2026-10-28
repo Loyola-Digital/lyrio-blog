@@ -7,7 +7,10 @@ export function slugify(s: string): string {
     .normalize('NFC')
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\p{M}]+/gu, '-')
-    .replace(/^-+|-+$/g, '')
+    .split('-')
+    // filtros de DNS de escolas e empresas bloqueiam URLs com "porn" ou "xxx"
+    .filter((w) => w && !/porn|xxx/.test(w))
+    .join('-')
   return Array.from(base).slice(0, MAX).join('').replace(/-+$/, '')
 }
 

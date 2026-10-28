@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { pendingTopics, publishArticles, type LaunchTopic } from '@/lib/launch'
+import type { Sql } from '@/lib/db'
+import { pendingTopics, syncArticles, type LaunchTopic } from '@/lib/launch'
 import { createPost, listPublished } from '@/lib/posts'
 import { src, testSql } from './helpers/db'
 
@@ -24,16 +25,31 @@ describe('lote de lançamento', () => {
   })
 })
 
-describe('publishArticles', () => {
-  it('cria e publica os artigos e pula os que já existem', async () => {
+describe('syncArticles', () => {
+  const a = { topic: 'Tema A', type: 'faq' as const, source: src({ slug: 'tema-a', title: 'Tema A' }) }
+  const b = { topic: 'Tema B', type: 'tutorial' as const, source: src({ slug: 'tema-b', title: 'Tema B' }) }
+  const slugs = async (sql: Sql) => (await listPublished(sql, 'pt-BR')).map((p) => p.slug).sort()
+
+  it('cria e publica os temas novos e não duplica ao rodar de novo', async () => {
     const sql = await testSql()
-    const articles = [
-      { topic: 'Tema A', type: 'faq' as const, source: src({ slug: 'tema-a', title: 'Tema A' }) },
-      { topic: 'Tema B', type: 'tutorial' as const, source: src({ slug: 'tema-b', title: 'Tema B' }) },
-    ]
-    expect(await publishArticles(sql, articles)).toEqual({ created: 2, skipped: 0 })
-    expect((await listPublished(sql, 'pt-BR')).map((p) => p.slug).sort()).toEqual(['tema-a', 'tema-b'])
-    expect(await publishArticles(sql, articles)).toEqual({ created: 0, skipped: 2 })
-    expect(await listPublished(sql, 'pt-BR')).toHaveLength(2)
+    expect(await syncArticles(sql, [a, b])).toEqual({ created: 2, updated: 0, removed: 0 })
+    expect(await slugs(sql)).toEqual(['tema-a', 'tema-b'])
+    expect(await syncArticles(sql, [a, b])).toEqual({ created: 0, updated: 0, removed: 0 })
+  })
+
+  it('atualiza o artigo do mesmo tema (inclusive o slug) e apaga os temas removidos', async () => {
+    const sql = await testSql()
+    await syncArticles(sql, [a, b])
+    const a2 = { ...a, source: { ...a.source, slug: 'tema-a-novo', bodyMd: 'novo' } }
+    expect(await syncArticles(sql, [a2], ['Tema B', 'Tema inexistente'])).toEqual({ created: 0, updated: 1, removed: 1 })
+    expect(await slugs(sql)).toEqual(['tema-a-novo'])
+  })
+
+  it('apaga antes de criar: um tema novo pode usar o slug de um removido', async () => {
+    const sql = await testSql()
+    await syncArticles(sql, [a])
+    const c = { ...a, topic: 'Tema C' }
+    expect(await syncArticles(sql, [c], ['Tema A'])).toEqual({ created: 1, updated: 0, removed: 1 })
+    expect(await slugs(sql)).toEqual(['tema-a'])
   })
 })

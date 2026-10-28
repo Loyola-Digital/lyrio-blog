@@ -87,6 +87,11 @@ h1 { font-weight: 500; font-size: clamp(38px, 5.2vw, 60px); line-height: 1.06; l
 .prose blockquote p { font-size: inherit; color: inherit; }
 .prose img { display: block; margin: 32px auto; max-height: 520px; border-radius: 22px; border: 5px solid #fff; box-shadow: 0 14px 34px rgba(27, 40, 71, 0.18); }
 .prose hr { border: 0; border-block-start: 1px solid var(--line); margin: 48px 0; }
+/* comparativos: no celular a tabela rola de lado em vez de estourar a coluna */
+.prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 8px 0 32px; font-family: var(--sans-stack); font-size: 15px; line-height: 1.45; }
+.prose th, .prose td { padding: 10px 14px; text-align: start; vertical-align: top; border-block-end: 1px solid var(--line); }
+.prose th { font-weight: 600; color: var(--navy); border-block-end: 2px solid var(--navy); white-space: nowrap; }
+.prose td:first-child { font-weight: 600; color: var(--ink); }
 
 .faq { margin-block-start: 60px; border-block-start: 2px solid var(--ink); }
 .faq h2 { margin: 22px 0 8px; }
